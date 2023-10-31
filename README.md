@@ -4,7 +4,9 @@ SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro ex
 
 8-Bit weather images by [Mariia Khmelnytska](https://www.istockphoto.com/portfolio/kmarfu?assettype=image&mediatype=illustration&sort=best), courtesy of [iStock.com](http://iStockPhoto.com)
 
-![](srw_demo_1.gif) ![](srw_demo_2.gif) ![](srw_demo_3.gif)
+# Replace with new demos after finishing 2.0 ![](srw_demo_1.gif) ![](srw_demo_2.gif) ![](srw_demo_3.gif)
+
+10/31/2023: We are in the process of moving SuperRetroWeather to Qwik City.  File Location, Installing Dependencies, and Server Operates are all out of date at this time.
 
 ## File Location
 
@@ -22,7 +24,7 @@ SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro ex
 
 ## Accessing the VisualCrossing Weather API
 
-- SuperRetroWeather uses [VisualCrossing's Weather Data Services](https://www.visualcrossing.com/weather/weather-data-services#/login) to retrieve all weather data.  
+- SuperRetroWeather uses [VisualCrossing's Weather Data Services](https://www.visualcrossing.com/weather/weather-data-services#/login) to retrieve all weather data.
 - To get SuperRetroWeather working on your machine, you will have to sign up for an account at the above site and get an API key.  Your API key can be found by clicking the _Account_ tab in the upper right hand corner, and is called your _Account Key_.
 
 - As is customary with API keys, the API key is stored in a .gitignored config file, called ``superretroweather/retroweather/weathercrossing/wc-api-key.js``.  Copy the ``wc-api-key-example.js`` file in that directory, rename it to ``wc-api-key.js`` and insert your API key where it says ``FILL_ME_IN``.
