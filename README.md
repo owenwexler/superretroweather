@@ -15,7 +15,7 @@ SuperRetroWeather uses the [Press Start 2P](https://fonts.google.com/specimen/Pr
 - SuperRetroWeather uses [VisualCrossing's Weather Data Services](https://www.visualcrossing.com/weather/weather-data-services#/login) to retrieve all weather data.
 - To get SuperRetroWeather working on your machine, you will have to sign up for an account at the above site and get an API key.  Your API key can be found by clicking the _Account_ tab in the upper right hand corner, and is called your _Account Key_.
 
-- As is customary with API keys, the API key is stored in .env, which is .gitignored.  Copy the ``wc-api-key-example.js`` file in that directory, rename it to ``wc-api-key.js`` and insert your API key where it says ``FILL_ME_IN``.
+- As is customary with API keys, the API key is stored in .env, which is .gitignored.  Copy the .env.example file in this repo into a blank .env file, and insert your API key where it says ``FILL_ME_IN``.
 
 # Qwik City App ⚡️
 
