@@ -1,0 +1,22 @@
+import { component$ } from '@builder.io/qwik';
+
+export interface ISRWInputProps {
+  inputId: string;
+  inputPlaceholder: string;
+}
+
+export default component$((props: ISRWInputProps) => {
+  const {
+    inputId,
+    inputPlaceholder
+  } = props;
+
+  return (
+    <input
+      class="bg-black border border-4 border-white text-white p-3 text-xs"
+      id={inputId}
+      type="text"
+      placeholder={inputPlaceholder}
+    />
+  );
+});

@@ -1,6 +1,9 @@
 import { component$, Slot, useStyles$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
+import Navbar from "~/components/style/navbar";
+import ResponsiveLogo from "~/components/style/responsive-logo";
+import SrwButton from "~/components/style/srw-button";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -22,6 +25,12 @@ export const useServerTimeLoader = routeLoader$(() => {
 export default component$(() => {
   return (
     <>
+      <Navbar>
+        <ResponsiveLogo />
+        <SrwButton buttonId="about-us-button">
+          <p class="text-sm max-sm:text-xs text-white">ABOUT</p>
+        </SrwButton>
+      </Navbar>
       <main>
         <Slot />
       </main>
