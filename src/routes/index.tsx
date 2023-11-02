@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import Spacer from "~/components/style/spacer";
-import SrwInput from "~/components/style/srw-input";
 import { getOfflineWeatherData } from "~/helper/getOfflineWeatherData";
 import type { IOfflineWeatherDataLookup } from "~/typedefs/IOfflineWeatherData";
 
@@ -20,10 +19,6 @@ export default component$(() => {
             <h3 class="text-white text-md max-sm:text-xs">SuperRetroWeather is rebuilding.</h3>
             <p></p>
             <p class="text-white text-xs">{JSON.stringify(offlineData.dc.location.id ? offlineData.dc.location.id : {})}</p>
-            <SrwInput
-              inputId="test"
-              inputPlaceholder="test"
-            />
           </div>
         </div>
       </section>

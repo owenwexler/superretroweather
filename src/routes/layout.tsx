@@ -1,7 +1,11 @@
 import { component$, Slot, useStyles$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
+import Search from "~/components/search";
+import ClickableText from "~/components/style/clickable-text";
 import Navbar from "~/components/style/navbar";
+import NavbarSection from "~/components/style/navbar-section";
+import NavbarSeparator from "~/components/style/navbar-separator";
 import ResponsiveLogo from "~/components/style/responsive-logo";
 import SrwButton from "~/components/style/srw-button";
 
@@ -23,13 +27,29 @@ export const useServerTimeLoader = routeLoader$(() => {
 });
 
 export default component$(() => {
+  // const hardcodedSavedLocations = ['Washington, DC', 'Dallas, TX', 'Virginia Beach, VA', 'Orlando, FL', 'Denver, CO'];
   return (
     <>
       <Navbar>
-        <ResponsiveLogo />
-        <SrwButton buttonId="about-us-button">
-          <p class="text-sm max-sm:text-xs text-white">ABOUT</p>
-        </SrwButton>
+        <NavbarSection>
+          <ResponsiveLogo />
+          <Search />
+          <SrwButton buttonId="about-us-button">
+            <p class="text-sm max-sm:text-xs text-white">ABOUT</p>
+          </SrwButton>
+        </NavbarSection>
+        <NavbarSeparator />
+        <NavbarSection>
+          <ClickableText text="Washington, DC" />
+          <ClickableText text="Dallas, TX" />
+          <ClickableText text="Virginia Beach, VA" />
+          <ClickableText text="Orlando, FL" />
+          <ClickableText text="Denver, CO" />
+            {/* {
+            hardcodedSavedLocations.map(location => { <ClickableText text={location} />)
+           } */}
+
+        </NavbarSection>
       </Navbar>
       <main>
         <Slot />
