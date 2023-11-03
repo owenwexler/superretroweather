@@ -5,10 +5,9 @@ SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro ex
 SuperRetroWeather uses the [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) font from Google Fonts.  We self-host the font using CSS code from [Google Webfonts Helper](https://gwfh.mranftl.com/fonts) for offline use and to guarantee perpetual availability in production, but we will also include, commented out, a link in the CSS to get the font directly from Google Fonts if you so desire.  The self-hosted font is NOT included in the repo.  If you want to self-host the font, download it from Google Fonts and place it in the public/fonts directory.
 
 8-Bit weather images by [Mariia Khmelnytska](https://www.istockphoto.com/portfolio/kmarfu?assettype=image&mediatype=illustration&sort=best), courtesy of [iStock.com](http://iStockPhoto.com)
+Due to licensing issues with using paid stock images in an FOSS app, these will be replaced with something we own all rights to soon.  For now, the images are .gitignored and any contributors must purchase their own license to be granted access to the images.
 
 # Replace with new demos after finishing 2.0 ![](srw_demo_1.gif) ![](srw_demo_2.gif) ![](srw_demo_3.gif)
-
-10/31/2023: We are in the process of migrating SuperRetroWeather to Qwik City.  All evergreen Qwik City-related details are included below.
 
 ## Accessing the VisualCrossing Weather API
 
@@ -16,6 +15,8 @@ SuperRetroWeather uses the [Press Start 2P](https://fonts.google.com/specimen/Pr
 - To get SuperRetroWeather working on your machine, you will have to sign up for an account at the above site and get an API key.  Your API key can be found by clicking the _Account_ tab in the upper right hand corner, and is called your _Account Key_.
 
 - As is customary with API keys, the API key is stored in .env, which is .gitignored.  Copy the .env.example file in this repo into a blank .env file, and insert your API key where it says ``FILL_ME_IN``.
+
+As of 10/31/2023, SuperRetroWeather uses Qwik City as its web framework.  All evergreen Qwik City-related details are included below.
 
 # Qwik City App ⚡️
 

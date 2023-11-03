@@ -1,5 +1,5 @@
-import { component$, Slot, useStyles$ } from "@builder.io/qwik";
-import { routeLoader$ } from "@builder.io/qwik-city";
+import { component$, Slot, $, useContext } from "@builder.io/qwik";
+import { Link, routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 import Search from "~/components/search";
 import ClickableText from "~/components/style/clickable-text";
@@ -8,6 +8,8 @@ import NavbarSection from "~/components/style/navbar-section";
 import NavbarSeparator from "~/components/style/navbar-separator";
 import ResponsiveLogo from "~/components/style/responsive-logo";
 import SrwButton from "~/components/style/srw-button";
+
+import { GlobalStateContext } from "~/root";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -27,28 +29,28 @@ export const useServerTimeLoader = routeLoader$(() => {
 });
 
 export default component$(() => {
-  // const hardcodedSavedLocations = ['Washington, DC', 'Dallas, TX', 'Virginia Beach, VA', 'Orlando, FL', 'Denver, CO'];
+  const globalState = useContext(GlobalStateContext);
+
+  const hardcodedSavedLocations = ['Washington, DC', 'Dallas, TX', 'Virginia Beach, VA', 'Orlando, FL', 'Denver, CO'];
+
+  const blankFunction = $(()=>{});
+
+  const handleCityClick = $((text: string) => {
+    globalState.currentCityText = text;
+  })
+
   return (
     <>
       <Navbar>
         <NavbarSection>
           <ResponsiveLogo />
           <Search />
-          <SrwButton buttonId="about-us-button">
-            <p class="text-sm max-sm:text-xs text-white">ABOUT</p>
-          </SrwButton>
         </NavbarSection>
         <NavbarSeparator />
         <NavbarSection>
-          <ClickableText text="Washington, DC" />
-          <ClickableText text="Dallas, TX" />
-          <ClickableText text="Virginia Beach, VA" />
-          <ClickableText text="Orlando, FL" />
-          <ClickableText text="Denver, CO" />
-            {/* {
-            hardcodedSavedLocations.map(location => { <ClickableText text={location} />)
-           } */}
-
+          {
+            hardcodedSavedLocations.map(location => <ClickableText key={`clickable-text-${location}`} textId={`clickable-text-${location}`} text={location} clickFunction={$(() => handleCityClick(location))}/>)
+          }
         </NavbarSection>
       </Navbar>
       <main>

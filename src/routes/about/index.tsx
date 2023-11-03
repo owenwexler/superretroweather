@@ -1,14 +1,13 @@
 import { component$, useContext } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import Spacer from "~/components/style/spacer";
-import { getOfflineWeatherData } from "~/helper/getOfflineWeatherData";
 import { GlobalStateContext } from "~/root";
-import type { IOfflineWeatherDataLookup } from "~/typedefs/IOfflineWeatherData";
 
 export default component$(() => {
-  const offlineData: IOfflineWeatherDataLookup = getOfflineWeatherData();
 
   const globalState = useContext(GlobalStateContext);
+
+  console.log(globalState)
 
   return (
     <>
@@ -18,11 +17,7 @@ export default component$(() => {
           <Spacer size={10} />
           <div class="space-y-4 text-center">
             <h1 class="text-white text-3xl max-sm:text-sm">SuperRetroWeather</h1>
-            <h3 class="text-white text-xl max-sm:text-xs">It's dangerous to stay on outdated technology.</h3>
-            <h3 class="text-white text-md max-sm:text-xs">SuperRetroWeather is rebuilding.</h3>
-            <p></p>
-            <p class="text-white text-xs">{globalState.currentCityText ? globalState.currentCityText : 'Enter a city'}</p>
-            <p class="text-white text-xs">{JSON.stringify(offlineData.dc.columns.maxt)}</p>
+            <h3 class="text-white text-xl max-sm:text-xs">ABOUT PAGE TO GO HERE.</h3>
           </div>
         </div>
       </section>
