@@ -2,9 +2,9 @@ import type { IVCWeatherResponse } from "./IVCWeatherResponse";
 
 interface ISRWGlobalState {
   currentCityText: string | null;
-  currentWeatherData: IVCWeatherResponse | null;
+  currentWeatherData: IVCWeatherResponse | { error: string } | null;
   weatherDataIsLoading: boolean;
-  weatherDataIeErrored: boolean;
+  weatherDataIsErrored: boolean;
   lastFiveCities: string[]
 }
 

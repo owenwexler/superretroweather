@@ -2,15 +2,31 @@ import {  component$, useContext, useSignal, $ } from '@builder.io/qwik';
 
 import SrwButton from '../style/srw-button';
 import { GlobalStateContext } from '~/root';
+import { getVCWeatherData } from '~/serverFunctions/getVCWeatherData';
+
+import type { IVCWeatherResponse } from '~/typedefs/IVCWeatherResponse';
+
 
 export default component$(() => {
   const globalState = useContext(GlobalStateContext);
 
   const currentText = useSignal('');
 
-  const handleClick = $(() => {
-    globalState.currentCityText = currentText.value;
-    currentText.value = '';
+  const handleClick = $(async () => {
+    globalState.weatherDataIsLoading = true;
+    globalState.weatherDataIsErrored = false;
+    try {
+      const weatherResponse = await getVCWeatherData(currentText.value);
+      const weatherData = weatherResponse as unknown as IVCWeatherResponse;
+      globalState.currentCityText = currentText.value;
+      globalState.currentWeatherData = weatherData;
+      globalState.weatherDataIsLoading = false;
+      currentText.value = '';
+    } catch (error) {
+      globalState.currentCityText = '';
+      globalState.weatherDataIsErrored = true;
+      globalState.currentWeatherData = { error: error as string }
+    }
   });
 
   return (

@@ -13,15 +13,15 @@ import vb from '../data/VCMockData/vb.json';
 
 const getOfflineWeatherData = (): IOfflineWeatherDataLookup => {
   const result: IOfflineWeatherDataLookup = {};
-  result['dallas'] = dallas as unknown as IVCWeatherResponse;
-  result['dc'] = dc as unknown as IVCWeatherResponse;
-  result['denver'] = denver as unknown as IVCWeatherResponse;
-  result['la'] = la as unknown as IVCWeatherResponse;
-  result['malaga'] = malaga as unknown as IVCWeatherResponse;
-  result['nashville'] = nashville as unknown as IVCWeatherResponse;
-  result['orlando'] = orlando as unknown as IVCWeatherResponse;
-  result['toronto'] = toronto as unknown as IVCWeatherResponse;
-  result['vb'] = vb as unknown as IVCWeatherResponse;
+  result['Dallas, TX'] = dallas as unknown as IVCWeatherResponse;
+  result['Washington, DC'] = dc as unknown as IVCWeatherResponse;
+  result['Denver, CO'] = denver as unknown as IVCWeatherResponse;
+  result['Los Angeles, CA'] = la as unknown as IVCWeatherResponse;
+  result['Malaga, Spain'] = malaga as unknown as IVCWeatherResponse;
+  result['Nashville, TN'] = nashville as unknown as IVCWeatherResponse;
+  result['Orlando, FL'] = orlando as unknown as IVCWeatherResponse;
+  result['Toronto, Canada'] = toronto as unknown as IVCWeatherResponse;
+  result['Virginia Beach, VA'] = vb as unknown as IVCWeatherResponse;
 
   return result;
 }

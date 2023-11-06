@@ -34,7 +34,7 @@ export default component$(() => {
     currentCityText: null,
     currentWeatherData: null,
     weatherDataIsLoading: false,
-    weatherDataIeErrored: false,
+    weatherDataIsErrored: false,
     lastFiveCities: []
   })
 
