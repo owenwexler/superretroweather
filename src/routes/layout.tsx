@@ -10,6 +10,8 @@ import ResponsiveLogo from "~/components/style/responsive-logo";
 import SrwButton from "~/components/style/srw-button";
 
 import { GlobalStateContext } from "~/root";
+import { getVCWeatherData } from "~/serverFunctions/getVCWeatherData";
+import { IVCWeatherResponse } from "~/typedefs/IVCWeatherResponse";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -35,8 +37,21 @@ export default component$(() => {
 
   const blankFunction = $(()=>{});
 
-  const handleCityClick = $((text: string) => {
-    globalState.currentCityText = text;
+  const handleCityClick = $(async (text: string) => {
+    globalState.weatherDataIsLoading = true;
+    globalState.weatherDataIsErrored = false;
+    try {
+      const weatherResponse = await getVCWeatherData(text);
+      const weatherData = weatherResponse as unknown as IVCWeatherResponse;
+      globalState.currentCityText = text;
+      globalState.currentWeatherData = weatherData;
+      globalState.weatherDataIsLoading = false;
+    } catch (error) {
+      globalState.currentCityText = '';
+      globalState.weatherDataIsLoading = false;
+      globalState.weatherDataIsErrored = true;
+      globalState.currentWeatherData = { error: error as string }
+    }
   })
 
   return (

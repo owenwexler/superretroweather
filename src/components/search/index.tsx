@@ -17,13 +17,14 @@ export default component$(() => {
     globalState.weatherDataIsErrored = false;
     try {
       const weatherResponse = await getVCWeatherData(currentText.value);
+      globalState.weatherDataIsLoading = false;
       const weatherData = weatherResponse as unknown as IVCWeatherResponse;
       globalState.currentCityText = currentText.value;
       globalState.currentWeatherData = weatherData;
-      globalState.weatherDataIsLoading = false;
       currentText.value = '';
     } catch (error) {
       globalState.currentCityText = '';
+      globalState.weatherDataIsLoading = false;
       globalState.weatherDataIsErrored = true;
       globalState.currentWeatherData = { error: error as string }
     }

@@ -1,25 +1,31 @@
-import { component$, useContext } from '@builder.io/qwik';
-import { GlobalStateContext } from '~/root';
-import Loading from '../style/loading';
+import { component$ } from '@builder.io/qwik';
 import WeatherDataError from '../weather-data-error';
 import type { IVCWeatherResponse } from '~/typedefs/IVCWeatherResponse';
+import CurrentConditions from '../weatherSubcomponents/current-conditions';
 
-export default component$(() => {
-  const globalState = useContext(GlobalStateContext);
+interface IWeatherContainerProps {
+  weatherData: IVCWeatherResponse | null;
+  loading: boolean;
+  error: boolean;
+}
 
-  if (globalState.weatherDataIsLoading) {
-    return <Loading />
-  }
+export default component$((props: IWeatherContainerProps) => {
+  const {
+    weatherData,
+    error
+  } = props;
 
-  if (globalState.weatherDataIsErrored) {
+  const typedWeatherData = weatherData as unknown as IVCWeatherResponse;
+
+  if (error) {
     return <WeatherDataError />
   }
 
-  const currentWeatherData = globalState.currentWeatherData ? globalState.currentWeatherData as IVCWeatherResponse : null;
-
   return (
-    <div class="space-y-4 text-center">
-
+    <div class="space-y-2 text-center">
+      <h1 class="text-white text-3xl">{typedWeatherData.location.name}</h1>
+      <CurrentConditions currentConditions={typedWeatherData.location.currentConditions} />
     </div>
+
   );
 });

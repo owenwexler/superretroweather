@@ -1,14 +1,16 @@
 const getPicNameFromCondition = (condition: string) => {
   const conditions = {
-    'Clear': 'clear.png',
-    'Overcast': 'cloudy.png',
-    'Rain': 'rain.png',
-    'Partially cloudy' : 'partly-cloudy.png',
-    'Snow': 'snow.png',
-    'Thunderstorms': 'thunderstorm.png',
+    'clear': 'clear.png',
+    'clear-night': 'cloudy-night.png',
+    'cloudy': 'cloudy-night.png',
+    'overcast': 'cloudy-night.png',
+    'rain': 'rain.png',
+    'partially cloudy' : 'partly-cloudy.png',
+    'snow': 'snow.png',
+    'thunderstorms': 'thunderstorm.png',
   }
 
-  const typedCondition = condition as keyof typeof conditions;
+  const typedCondition = condition.toLowerCase() as keyof typeof conditions;
   return conditions[typedCondition];
 }
 

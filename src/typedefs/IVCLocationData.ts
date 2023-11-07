@@ -1,3 +1,4 @@
+import type { ICurrentConditions } from "./ICurrentConditions";
 import type { IVCWeatherDayValueSet } from "./IVCWeatherDayValueSet";
 
 interface IVCLocationData {
@@ -12,7 +13,7 @@ interface IVCLocationData {
   distance: number;
   time: number;
   tz: string;
-  currentConditions: IVCWeatherDayValueSet;
+  currentConditions: ICurrentConditions;
   alerts: string | null;
 }
 
