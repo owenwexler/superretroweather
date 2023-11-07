@@ -11,8 +11,6 @@ interface ICurrentConditionsProps {
 export default component$((props: ICurrentConditionsProps) => {
   const { currentConditions } = props;
 
-  console.log(currentConditions.icon)
-
   const picName = getPicNameFromCondition(currentConditions.icon);
 
   return (
