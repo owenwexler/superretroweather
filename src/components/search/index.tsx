@@ -13,6 +13,10 @@ export default component$(() => {
   const currentText = useSignal('');
 
   const handleClick = $(async () => {
+    if (currentText.value === '') {
+      return;
+    }
+
     globalState.weatherDataIsLoading = true;
     globalState.weatherDataIsErrored = false;
     try {
@@ -31,7 +35,7 @@ export default component$(() => {
   });
 
   return (
-    <div class="flex flex-row items-center justify-center space-x-3">
+    <div class="flex flex-row max-md:flex-col items-center justify-center space-x-3">
       <input
       class="bg-black border border-4 border-white text-white p-3 pl-2 text-xs"
       id="srw-search-text"

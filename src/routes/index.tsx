@@ -5,13 +5,16 @@ import { GlobalStateContext } from "~/root";
 
 import NoWeatherData from '../components/no-weather-data';
 import WeatherContainer from "~/components/weather-container";
-import { IVCWeatherResponse } from "~/typedefs/IVCWeatherResponse";
+import type { IVCWeatherResponse } from "~/typedefs/IVCWeatherResponse";
 import Loading from "~/components/loading";
+import { getOfflineWeatherData } from "~/helper/getOfflineWeatherData";
 
 export default component$(() => {
   const globalState = useContext(GlobalStateContext);
 
-  const typedCurrentWeatherData = globalState.currentWeatherData as unknown as IVCWeatherResponse;
+  //const typedCurrentWeatherData = globalState.currentWeatherData as unknown as IVCWeatherResponse;
+
+  const typedCurrentWeatherData = getOfflineWeatherData()['Washington, DC'] as IVCWeatherResponse;
 
   return (
     <>
@@ -19,6 +22,26 @@ export default component$(() => {
         <div class="flex h-screen w-4/6 max-sm:w-full max-sm:p-3 flex-col items-center justify-start py-9 max-sm:py-9 pb-10">
           <Spacer size={10} />
           <Spacer size={10} />
+          <div class="md:hidden">
+            <Spacer size={10} />
+            <Spacer size={10} />
+            <Spacer size={10} />
+          </div>
+          <div class="md:hidden">
+            <Spacer size={10} />
+            <Spacer size={10} />
+            <Spacer size={10} />
+          </div>
+          <div class="md:hidden">
+            <Spacer size={10} />
+            <Spacer size={10} />
+            <Spacer size={10} />
+          </div>
+          <div class="md:hidden">
+            <Spacer size={10} />
+            <Spacer size={10} />
+            <Spacer size={10} />
+          </div>
           {globalState.weatherDataIsLoading && <Loading />}
           {
             typedCurrentWeatherData

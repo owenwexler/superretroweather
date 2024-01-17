@@ -13,7 +13,7 @@ export default component$(() => {
           </ResponsiveLogoText>
         </Link>
       </div>
-      <div id="responsive-logo-tablet" class="max-sm:hidden">
+      <div id="responsive-logo-tablet" class="max-md:hidden">
         <Link href="/">
           <ResponsiveLogoText textId="responsive-logo-text-tablet">
             SuperRetroWeather

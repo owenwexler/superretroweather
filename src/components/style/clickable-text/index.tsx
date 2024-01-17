@@ -13,7 +13,7 @@ export default component$((props: IClickableTextProps) => {
     <p
       id={textId}
       onClick$={clickFunction}
-      class="text-sm max-sm:text-xs cursor-pointer underline text-white hover:text-gray-400 active:text-gray-500 scale-95 transition-transform duration-[10ms]">
+      class="text-sm max-lg:text-xs cursor-pointer underline text-white hover:text-gray-400 active:text-gray-500 scale-95 transition-transform duration-[10ms]">
         {text}
     </p>
   )

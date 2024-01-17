@@ -13,7 +13,7 @@ export default component$((props: ISRWInputProps) => {
 
   return (
     <input
-      class="bg-black border border-4 border-white text-white p-3 text-xs"
+      class="bg-black border border-4 border-white text-white p-3 text-xs max-md:ml-6 max-sm:w-3"
       id={inputId}
       type="text"
       placeholder={inputPlaceholder}

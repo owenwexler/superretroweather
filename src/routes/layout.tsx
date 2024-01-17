@@ -7,6 +7,7 @@ import Navbar from "~/components/style/navbar";
 import NavbarSection from "~/components/style/navbar-section";
 import NavbarSeparator from "~/components/style/navbar-separator";
 import ResponsiveLogo from "~/components/style/responsive-logo";
+import Spacer from "~/components/style/spacer";
 import SrwButton from "~/components/style/srw-button";
 
 import { GlobalStateContext } from "~/root";
@@ -43,6 +44,7 @@ export default component$(() => {
     try {
       const weatherResponse = await getVCWeatherData(text);
       const weatherData = weatherResponse as unknown as IVCWeatherResponse;
+      console.log(weatherData);
       globalState.currentCityText = text;
       globalState.currentWeatherData = weatherData;
       globalState.weatherDataIsLoading = false;
