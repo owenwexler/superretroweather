@@ -1,10 +1,13 @@
-const getPicNameFromCondition = (condition: string) => {
+import type { TConditionImageType } from "~/typedefs/TConditionImageType";
+
+const getPicNameFromCondition = (condition: TConditionImageType) => {
   const conditions = {
     'clear': 'clear.png',
     'clear-night': 'cloudy-night.png',
     'cloudy': 'cloudy-night.png',
     'overcast': 'cloudy-night.png',
     'rain': 'rain.png',
+    'rain, overcast': 'rain.png',
     'partially cloudy' : 'partly-cloudy.png',
     'snow': 'snow.png',
     'thunderstorms': 'thunderstorm.png',

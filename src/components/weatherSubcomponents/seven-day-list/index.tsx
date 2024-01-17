@@ -1,21 +1,28 @@
 import { component$ } from '@builder.io/qwik';
-import { formatDateMMDDYY } from '~/helper/formatDateMMDDYY';
-import { formatTime } from '~/helper/formatTime';
 
-import { getPicNameFromCondition } from '~/helper/getPicNameFromCondition';
-import type { ICurrentConditions } from '~/typedefs/ICurrentConditions';
-import { IVCWeatherDayValueSet } from '~/typedefs/IVCWeatherDayValueSet';
+import type { IVCWeatherDayValueSet } from '~/typedefs/IVCWeatherDayValueSet';
+import SevenDayListItem from '../seven-day-list-item';
 
 interface ISevenDayListProps {
+  cityName: string;
   sevenDayData: IVCWeatherDayValueSet[];
+
 }
 
 export default component$((props: ISevenDayListProps) => {
-  const { sevenDayData } = props;
+  const { cityName, sevenDayData } = props;
 
   return (
-    <div class="flex flex-col mt-5">
-
+    <div class="flex flex-col mt-9">
+      <h2 class="text-2xl mt-9 mb-2 text-white">SEVEN-DAY FORECAST</h2>
+      {
+        sevenDayData.map(sevenDayListItem => {
+          return <SevenDayListItem
+            key={`seven-day-item-${cityName}-${sevenDayListItem.datetimeStr}`}
+            sevenDayListItem={sevenDayListItem}
+          />
+        })
+      }
     </div>
   )
 });

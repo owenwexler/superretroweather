@@ -1,0 +1,1 @@
+export type TConditionImageType = 'clear' | 'clear-night' | 'cloudy' | 'overcast' | 'rain' | 'partially cloudy' | 'rain, overcast' | 'snow' | 'thunderstorms';

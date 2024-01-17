@@ -2,6 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import WeatherDataError from '../weather-data-error';
 import type { IVCWeatherResponse } from '~/typedefs/IVCWeatherResponse';
 import CurrentConditions from '../weatherSubcomponents/current-conditions';
+import SevenDayList from '../weatherSubcomponents/seven-day-list';
 
 interface IWeatherContainerProps {
   weatherData: IVCWeatherResponse | null;
@@ -25,6 +26,10 @@ export default component$((props: IWeatherContainerProps) => {
     <div class="space-y-2 text-center">
       <h1 class="text-white text-3xl">{typedWeatherData.location.name}</h1>
       <CurrentConditions currentConditions={typedWeatherData.location.currentConditions} />
+      <SevenDayList
+        cityName={typedWeatherData.location.id}
+        sevenDayData={typedWeatherData.location.values}
+      />
     </div>
 
   );

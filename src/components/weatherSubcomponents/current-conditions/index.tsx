@@ -2,8 +2,10 @@ import { component$ } from '@builder.io/qwik';
 import { formatDateMMDDYY } from '~/helper/formatDateMMDDYY';
 import { formatTime } from '~/helper/formatTime';
 
-import { getPicNameFromCondition } from '~/helper/getPicNameFromCondition';
 import type { ICurrentConditions } from '~/typedefs/ICurrentConditions';
+import type { TConditionImageType } from '~/typedefs/TConditionImageType';
+
+import WeatherConditionImage from '~/components/style/weather-condition-image';
 
 interface ICurrentConditionsProps {
   currentConditions: ICurrentConditions;
@@ -12,13 +14,15 @@ interface ICurrentConditionsProps {
 export default component$((props: ICurrentConditionsProps) => {
   const { currentConditions } = props;
 
-  const picName = getPicNameFromCondition(currentConditions.icon);
-
   return (
     <div class="flex flex-col mt-5 items-center justify-center text-center">
       <h1 class="text-white text-3xl">{formatDateMMDDYY(currentConditions.datetime)}</h1>
       <div class="flex flex-row space-x-5 items-center justify-center">
-        <img src={`/images/istock/${picName}?url&jsx`} height="100" width="100"></img>
+        <WeatherConditionImage
+          condition={currentConditions.icon as TConditionImageType}
+          width={100}
+          height={100}
+        />
         <h1 class="text-white text-4xl">{Math.round(currentConditions.temp)}º</h1>
       </div>
       <div class="flex flex-row items-center justify-center space-x-5">
