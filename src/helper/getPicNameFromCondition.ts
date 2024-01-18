@@ -8,8 +8,10 @@ const getPicNameFromCondition = (condition: TConditionImageType) => {
     'overcast': 'cloudy-night.png',
     'rain': 'rain.png',
     'rain, overcast': 'rain.png',
+    'rain, partially cloudy': 'rain.png',
     'partially cloudy' : 'partly-cloudy.png',
     'snow': 'snow.png',
+    'snow, overcast': 'snow.png',
     'thunderstorms': 'thunderstorm.png',
   }
 

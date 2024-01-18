@@ -3,11 +3,12 @@ import WeatherDataError from '../weather-data-error';
 import type { IVCWeatherResponse } from '~/typedefs/IVCWeatherResponse';
 import CurrentConditions from '../weatherSubcomponents/current-conditions';
 import SevenDayList from '../weatherSubcomponents/seven-day-list';
+import NotFound from '../not-found';
 
 interface IWeatherContainerProps {
   weatherData: IVCWeatherResponse | null;
   loading: boolean;
-  error: boolean;
+  error: string | null | undefined;
 }
 
 export default component$((props: IWeatherContainerProps) => {
@@ -18,8 +19,15 @@ export default component$((props: IWeatherContainerProps) => {
 
   const typedWeatherData = weatherData as unknown as IVCWeatherResponse;
 
-  if (error) {
-    return <WeatherDataError />
+  console.log(typedWeatherData)
+  console.log('error: ', error)
+
+  if (error && error !== '') {
+    if (error === 'not found') {
+      return <NotFound />
+    } else {
+      return <WeatherDataError />
+    }
   }
 
   return (

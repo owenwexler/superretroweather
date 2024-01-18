@@ -11,19 +11,22 @@ import orlando from '../data/VCMockData/orlando.json';
 import toronto from '../data/VCMockData/toronto.json';
 import vb from '../data/VCMockData/vb.json';
 
-const getOfflineWeatherData = (): IOfflineWeatherDataLookup => {
-  const result: IOfflineWeatherDataLookup = {};
-  result['Dallas, TX'] = dallas as unknown as IVCWeatherResponse;
-  result['Washington, DC'] = dc as unknown as IVCWeatherResponse;
-  result['Denver, CO'] = denver as unknown as IVCWeatherResponse;
-  result['Los Angeles, CA'] = la as unknown as IVCWeatherResponse;
-  result['Malaga, Spain'] = malaga as unknown as IVCWeatherResponse;
-  result['Nashville, TN'] = nashville as unknown as IVCWeatherResponse;
-  result['Orlando, FL'] = orlando as unknown as IVCWeatherResponse;
-  result['Toronto, Canada'] = toronto as unknown as IVCWeatherResponse;
-  result['Virginia Beach, VA'] = vb as unknown as IVCWeatherResponse;
+import blankVCResponse from '../data/blankVCResponse.json';
 
-  return result;
+const getOfflineWeatherData = (text: string): IVCWeatherResponse => {
+  console.log(text)
+  const lookup: IOfflineWeatherDataLookup = {};
+  lookup['Dallas, TX'] = dallas as unknown as IVCWeatherResponse;
+  lookup['Washington, DC'] = dc as unknown as IVCWeatherResponse;
+  lookup['Denver, CO'] = denver as unknown as IVCWeatherResponse;
+  lookup['Los Angeles, CA'] = la as unknown as IVCWeatherResponse;
+  lookup['Malaga, Spain'] = malaga as unknown as IVCWeatherResponse;
+  lookup['Nashville, TN'] = nashville as unknown as IVCWeatherResponse;
+  lookup['Orlando, FL'] = orlando as unknown as IVCWeatherResponse;
+  lookup['Toronto, Canada'] = toronto as unknown as IVCWeatherResponse;
+  lookup['Virginia Beach, VA'] = vb as unknown as IVCWeatherResponse;
+
+  return lookup[text as keyof typeof lookup] ? lookup[text as keyof typeof lookup] : { ...blankVCResponse, error: 'not found' } as unknown as IVCWeatherResponse;
 }
 
 export {

@@ -9,10 +9,13 @@ import NavbarSeparator from "~/components/style/navbar-separator";
 import ResponsiveLogo from "~/components/style/responsive-logo";
 import Spacer from "~/components/style/spacer";
 import SrwButton from "~/components/style/srw-button";
+import { getOfflineWeatherData } from "~/helper/getOfflineWeatherData";
 
 import { GlobalStateContext } from "~/root";
 import { getVCWeatherData } from "~/serverFunctions/getVCWeatherData";
 import { IVCWeatherResponse } from "~/typedefs/IVCWeatherResponse";
+
+import blankVCResponse from '../data/blankVCResponse.json';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -41,10 +44,21 @@ export default component$(() => {
   const handleCityClick = $(async (text: string) => {
     globalState.weatherDataIsLoading = true;
     globalState.weatherDataIsErrored = false;
+    window.scrollTo(0, 0);
+
+    console.log('dev mode:', process.env.DEV_MODE)
+
+    if (process.env.DEV_MODE === 'offline') {
+      console.log('offline section hit');
+      globalState.weatherDataIsLoading = false;
+      const weatherData = getOfflineWeatherData(text);
+      globalState.currentCityText = text;
+      globalState.currentWeatherData = weatherData;
+    }
+
     try {
       const weatherResponse = await getVCWeatherData(text);
       const weatherData = weatherResponse as unknown as IVCWeatherResponse;
-      console.log(weatherData);
       globalState.currentCityText = text;
       globalState.currentWeatherData = weatherData;
       globalState.weatherDataIsLoading = false;
@@ -52,7 +66,7 @@ export default component$(() => {
       globalState.currentCityText = '';
       globalState.weatherDataIsLoading = false;
       globalState.weatherDataIsErrored = true;
-      globalState.currentWeatherData = { error: error as string }
+      globalState.currentWeatherData = { ...blankVCResponse, error: error as string } as unknown as IVCWeatherResponse;
     }
   })
 

@@ -12,7 +12,7 @@ interface IVCWeatherColumnSet {
   datetime: IVCWeatherColumn;
   precip: IVCWeatherColumn;
   snowdepth: IVCWeatherColumn;
-  show: IVCWeatherColumn;
+  snow: IVCWeatherColumn;
   name: IVCWeatherColumn;
   humidity: IVCWeatherColumn;
   wgust: IVCWeatherColumn;

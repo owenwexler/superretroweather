@@ -7,15 +7,14 @@ import NoWeatherData from '../components/no-weather-data';
 import WeatherContainer from "~/components/weather-container";
 import type { IVCWeatherResponse } from "~/typedefs/IVCWeatherResponse";
 import Loading from "~/components/loading";
-import { getOfflineWeatherData } from "~/helper/getOfflineWeatherData";
 import OpenSourceStatement from "~/components/open-source-statement";
+
+import blankVCResponse from '../data/blankVCResponse.json';
 
 export default component$(() => {
   const globalState = useContext(GlobalStateContext);
 
-  //const typedCurrentWeatherData = globalState.currentWeatherData as unknown as IVCWeatherResponse;
-
-  const typedCurrentWeatherData = getOfflineWeatherData()['Washington, DC'] as IVCWeatherResponse;
+  const typedCurrentWeatherData = globalState.currentWeatherData as unknown as IVCWeatherResponse;
 
   return (
     <>
@@ -23,6 +22,7 @@ export default component$(() => {
         <div class="flex h-screen w-4/6 max-sm:w-full max-sm:p-3 flex-col items-center justify-start py-9 max-sm:py-9 pb-10">
           <Spacer size={10} />
           <Spacer size={10} />
+          {/* this complete mess is required to make everything show up on mobile. */}
           <div class="md:hidden">
             <Spacer size={10} />
             <Spacer size={10} />
@@ -45,15 +45,19 @@ export default component$(() => {
           </div>
           {globalState.weatherDataIsLoading && <Loading />}
           {
-            typedCurrentWeatherData
+            typedCurrentWeatherData && !globalState.weatherDataIsLoading
             ?
             <WeatherContainer
-              weatherData={typedCurrentWeatherData}
+              weatherData={typedCurrentWeatherData as IVCWeatherResponse}
               loading={globalState.weatherDataIsLoading}
-              error={globalState.weatherDataIsErrored}
+              error={globalState && globalState.currentWeatherData.error ? globalState.currentWeatherData.error : null}
             />
             :
-            <NoWeatherData />
+              !globalState.weatherDataIsLoading
+              ?
+              <NoWeatherData />
+              :
+              null
           }
           <Spacer size={10} />
           <OpenSourceStatement />
