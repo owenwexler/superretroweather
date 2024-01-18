@@ -15,14 +15,16 @@ export default component$((props: ISevenDayListProps) => {
   return (
     <div class="flex flex-col mt-9">
       <h2 class="text-2xl mt-9 mb-2 text-white">SEVEN-DAY FORECAST</h2>
-      {
-        sevenDayData.map(sevenDayListItem => {
-          return <SevenDayListItem
-            key={`seven-day-item-${cityName}-${sevenDayListItem.datetimeStr}`}
-            sevenDayListItem={sevenDayListItem}
-          />
-        })
-      }
+      <div class='flex flex-col space-y-8'>
+        {
+          sevenDayData.map(sevenDayListItem => {
+            return <SevenDayListItem
+              key={`seven-day-item-${cityName}-${sevenDayListItem.datetimeStr}`}
+              sevenDayListItem={sevenDayListItem}
+            />
+          })
+        }
+      </div>
     </div>
   )
 });
