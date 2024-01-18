@@ -8,6 +8,7 @@ import WeatherContainer from "~/components/weather-container";
 import type { IVCWeatherResponse } from "~/typedefs/IVCWeatherResponse";
 import Loading from "~/components/loading";
 import { getOfflineWeatherData } from "~/helper/getOfflineWeatherData";
+import OpenSourceStatement from "~/components/open-source-statement";
 
 export default component$(() => {
   const globalState = useContext(GlobalStateContext);
@@ -54,6 +55,9 @@ export default component$(() => {
             :
             <NoWeatherData />
           }
+          <Spacer size={10} />
+          <OpenSourceStatement />
+          <Spacer size={10} />
         </div>
       </section>
     </>
