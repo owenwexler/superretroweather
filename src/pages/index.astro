@@ -1,0 +1,43 @@
+---
+import Navbar from "../components/Navbar/Navbar.astro";
+import NavbarSection from "../components/Navbar/NavbarSection.astro";
+import ResponsiveLogo from "../components/style/ResponsiveLogo.astro";
+
+import Search from '../components/Navbar/Search';
+import ClientContainer from "../components/ClientContainer";
+import MobileResponsiveSpacerGroup from '../components/MobileResponsiveSpacerGroup';
+import SavedLocations from "../components/Navbar/SavedLocations";
+import OpenSourceStatement from "../components/OpenSourceStatement.astro";
+import ImageCredit from "../components/ImageCredit.astro";
+import AstroSpacer from "../components/AstroSpacer.astro";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" href="global.css">
+		<title>SuperRetroWeather</title>
+	</head>
+	<body>
+		<Navbar>
+			<NavbarSection>
+				<ResponsiveLogo />
+				<Search client:load />
+			</NavbarSection>
+      <SavedLocations client:load />
+		</Navbar>
+		<main>
+      <section class="flex min-h-screen flex-col items-center justify-start mt-10">
+        <div class="flex h-screen w-4/6 max-sm:w-full max-sm:p-3 flex-col items-center justify-start py-9 max-sm:py-9 pb-10">
+          <MobileResponsiveSpacerGroup />
+					<ClientContainer client:load />
+          <OpenSourceStatement />
+          <ImageCredit />
+          <p class="p-10" />
+				</section>
+			</main>
+	</body>
+</html>

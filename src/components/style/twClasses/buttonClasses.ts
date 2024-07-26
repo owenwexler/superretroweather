@@ -1,0 +1,1 @@
+export const srwTransparentButton = 'rounded-none bg-black border-white border-4 m-1 p-2 active:scale-95 transition-transform duration-[10ms]';

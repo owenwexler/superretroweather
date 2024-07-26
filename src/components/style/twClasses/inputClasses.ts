@@ -1,0 +1,1 @@
+export const srwTransparentInput = 'bg-black border-4 border-white text-white p-3 text-xs max-md:ml-6 max-sm:w-48';
