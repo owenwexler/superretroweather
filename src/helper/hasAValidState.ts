@@ -1,4 +1,4 @@
-import { stateAbbreviations, stateNames } from "~/data/staticLocationAndTimeData";
+import { stateAbbreviations, stateNames } from '../data/staticLocationAndTimeData';
 import { splitCityAndState } from "./splitCityAndState";
 
 const hasAValidState = (location: string) => {

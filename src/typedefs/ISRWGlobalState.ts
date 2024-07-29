@@ -1,4 +1,3 @@
-import type { IError } from "./IError";
 import type { IVCWeatherResponse } from "./IVCWeatherResponse";
 
 interface ISRWGlobalState {
