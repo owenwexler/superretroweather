@@ -1,14 +1,15 @@
-import { formatDateMMDDYY } from "../../helper/formatDateMMDDYY";
-import { formatTime } from "../../helper/formatTime";
-import type { ICurrentConditions } from "../../typedefs/ICurrentConditions"
-import type { TConditionImageType } from "../../typedefs/TConditionImageType";
-import WeatherConditionImage from "./WeatherConditionImage";
+import type { FC } from 'preact/compat';
+import { formatDateMMDDYY } from '../../helper/formatDateMMDDYY';
+import { formatTime } from '../../helper/formatTime';
+import type { ICurrentConditions } from '../../typedefs/ICurrentConditions'
+import type { TConditionImageType } from '../../typedefs/TConditionImageType';
+import WeatherConditionImage from './WeatherConditionImage';
 
 interface CurrentConditionsProps {
   conditions: ICurrentConditions;
 }
 
-const CurrentConditions: React.FC<CurrentConditionsProps> = ({ conditions }) => {
+const CurrentConditions: FC<CurrentConditionsProps> = ({ conditions }) => {
   const conditionIcon = conditions.icon ? conditions.icon as TConditionImageType : 'clear';
 
   return (

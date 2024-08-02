@@ -1,5 +1,6 @@
-import { getPicNameFromCondition } from "../../helper/getPicNameFromCondition";
-import type { TConditionImageType } from "../../typedefs/TConditionImageType";
+import type { FC } from 'preact/compat';
+import { getPicNameFromCondition } from '../../helper/getPicNameFromCondition';
+import type { TConditionImageType } from '../../typedefs/TConditionImageType';
 
 interface WeatherConditionImageProps {
   condition: TConditionImageType;
@@ -7,7 +8,7 @@ interface WeatherConditionImageProps {
   height: number;
 }
 
-const WeatherConditionImage: React.FC<WeatherConditionImageProps> = ({ condition, width, height }) => {
+const WeatherConditionImage: FC<WeatherConditionImageProps> = ({ condition, width, height }) => {
   const picName = getPicNameFromCondition(condition);
 
   return (

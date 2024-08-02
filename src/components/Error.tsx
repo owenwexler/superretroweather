@@ -1,4 +1,6 @@
-const Error: React.FC = () => {
+import type { FC } from 'preact/compat';
+
+const Error: FC = () => {
   return (
     <div className="space-y-4 text-center p-3">
       <h1 className="text-white text-2xl max-sm:text-sm">I AM ERROR.</h1>

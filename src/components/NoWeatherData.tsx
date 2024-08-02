@@ -1,4 +1,6 @@
-const NoWeatherData: React.FC = () => {
+import type { FC } from 'preact/compat';
+
+const NoWeatherData: FC = () => {
   return (
     <div className="space-y-4 text-center p-3 max-sm:mt-11">
       <h1 className="text-white text-2xl max-sm:text-lg">IT'S DANGEROUS TO NOT KNOW THE WEATHER!</h1>
