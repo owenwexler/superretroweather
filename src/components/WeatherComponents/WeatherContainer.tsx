@@ -1,10 +1,14 @@
-import { useQuery } from '@tanstack/react-query';
-import NoWeatherData from '../NoWeatherData';
 import Loading from '../Loading';
 import Error from '../Error';
 import CurrentConditions from './CurrentConditions';
 import WeatherHeader from './WeatherHeader';
 import SevenDayList from './SevenDayList';
+
+import blankVCResponse from '../../data/blankVCResponse.json';
+
+import { useState, useEffect } from 'preact/hooks';
+
+import type { IVCWeatherResponse } from '../../typedefs/IVCWeatherResponse';
 
 interface WeatherContainerProps {
   location: string;
@@ -17,7 +21,28 @@ const fetchWeatherData = async (location: string) => {
 }
 
 const WeatherContainer: React.FC<WeatherContainerProps> = ({ location }) => {
-  const { isLoading, isError, data, error  } = useQuery({ queryKey: [`weather-${location}`], queryFn: () => fetchWeatherData(location) })
+  const typedBlankVCResponse = blankVCResponse as unknown as IVCWeatherResponse;
+
+  // I haven't done an old-school useEffect fetch in so long I had to look up how to do it
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [data, setData] = useState<IVCWeatherResponse>(typedBlankVCResponse);
+  const [error, setError] = useState<{error: string}>({ error: '' });
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchWeatherData(location)
+      .then(data => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error(error);
+        setError(error);
+        setIsError(true);
+        setIsLoading(false);
+      })
+  }, [location]);
 
   if (isLoading) {
     return <Loading />

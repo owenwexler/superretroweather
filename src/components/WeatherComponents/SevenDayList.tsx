@@ -1,12 +1,13 @@
-import type { IVCWeatherDayValueSet } from "../../typedefs/IVCWeatherDayValueSet"
-import SevenDayListItem from "./SevenDayListItem";
+import type { FC } from 'preact/compat';
+import type { IVCWeatherDayValueSet } from '../../typedefs/IVCWeatherDayValueSet'
+import SevenDayListItem from './SevenDayListItem';
 
 interface SevenDayListProps {
   sevenDayList: IVCWeatherDayValueSet[];
   location: string;
 }
 
-const SevenDayList: React.FC<SevenDayListProps> = ({ sevenDayList, location }) => {
+const SevenDayList: FC<SevenDayListProps> = ({ sevenDayList, location }) => {
   return (
     <div className="flex flex-col mt-9">
       <h2 className="text-2xl mt-9 mb-2 text-white">SEVEN-DAY FORECAST</h2>

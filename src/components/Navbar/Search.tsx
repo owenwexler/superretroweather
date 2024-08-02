@@ -1,11 +1,10 @@
-import { useState } from 'react';
-
-import { useStore } from '@nanostores/react';
+import { useStore } from '@nanostores/preact';
 import { $currentLocation, $savedLocations } from '../../store/weatherStore';
 import { srwTransparentInput } from '../style/twClasses/inputClasses';
 import { srwTransparentButton } from '../style/twClasses/buttonClasses';
 import { addLocation } from '../../helper/savedLocationFunctions';
 import { LOCAL_STORAGE_KEY } from '../../data/localStorageKey';
+import { useState } from 'preact/hooks';
 
 
 const Search: React.FC = () => {

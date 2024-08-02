@@ -1,13 +1,14 @@
-import { formatDateMMDDYY } from "../../helper/formatDateMMDDYY";
-import type { IVCWeatherDayValueSet } from "../../typedefs/IVCWeatherDayValueSet"
-import type { TConditionImageType } from "../../typedefs/TConditionImageType";
-import WeatherConditionImage from "./WeatherConditionImage";
+import type { FC } from 'preact/compat';
+import { formatDateMMDDYY } from '../../helper/formatDateMMDDYY';
+import type { IVCWeatherDayValueSet } from '../../typedefs/IVCWeatherDayValueSet'
+import type { TConditionImageType } from '../../typedefs/TConditionImageType';
+import WeatherConditionImage from './WeatherConditionImage';
 
 interface SevenDayListItemProps {
   sevenDayListItem: IVCWeatherDayValueSet;
 }
 
-const SevenDayListItem: React.FC<SevenDayListItemProps> = ({ sevenDayListItem }) => {
+const SevenDayListItem: FC<SevenDayListItemProps> = ({ sevenDayListItem }) => {
   const {
     maxt,
     visibility,

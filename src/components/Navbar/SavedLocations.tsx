@@ -2,11 +2,11 @@ import { clickableText } from "../style/twClasses/clickableTextClasses";
 
 import { $currentLocation } from "../../store/weatherStore";
 import ClientNavbarSeparator from "./ClientNavbarSeparator";
-import ClientNavbarSection from "./ClientNavbarSection";
 
 import { $savedLocations } from "../../store/weatherStore";
-import { useStore } from "@nanostores/react";
-import { useEffect } from "react";
+import { useStore } from "@nanostores/preact";
+import { useEffect } from "preact/hooks";
+
 
 const SavedLocations: React.FC = () => {
   const locations = useStore($savedLocations);

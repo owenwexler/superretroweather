@@ -1,4 +1,6 @@
-const Loading: React.FC = () => {
+import type { FC } from 'preact/compat';
+
+const Loading: FC = () => {
   return (
     <div className="flex flex-col space-y-4 items-center justify-center text-center">
       <div className="flex flex-row space-x-3 items-center justify-center">

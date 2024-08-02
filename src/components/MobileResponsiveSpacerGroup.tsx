@@ -1,8 +1,9 @@
-import { $savedLocations } from "../store/weatherStore";
-import { useStore } from "@nanostores/react";
-import ClientSpacer from "./ClientSpacer";
+import { $savedLocations } from '../store/weatherStore';
+import { useStore } from '@nanostores/preact';
+import ClientSpacer from './ClientSpacer';
+import type { FC } from 'preact/compat';
 
-const MobileResponsiveSpacerGroup = () => {
+const MobileResponsiveSpacerGroup: FC = () => {
   const savedLocations = useStore($savedLocations);
 
   return (
