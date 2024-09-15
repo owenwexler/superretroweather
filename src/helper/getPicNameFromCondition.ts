@@ -14,7 +14,7 @@ const getPicNameFromCondition = (condition: TConditionImageType) => {
     'snow': 'snow.png',
     'snow, overcast': 'snow.png',
     'thunderstorms': 'thunderstorm.png',
-    'partly-cloudy-day': 'party-cloudy.png'
+    'partly-cloudy-day': 'partly-cloudy.png'
   }
 
   const typedCondition = condition.toLowerCase() as keyof typeof conditions;

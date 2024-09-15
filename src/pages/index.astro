@@ -32,7 +32,7 @@ import AstroSpacer from "../components/AstroSpacer.astro";
 		<main>
       <section class="flex min-h-screen flex-col items-center justify-start mt-10">
         <div class="flex h-screen w-4/6 max-sm:w-full max-sm:p-3 flex-col items-center justify-start py-9 max-sm:py-9 pb-10">
-          <MobileResponsiveSpacerGroup />
+          <MobileResponsiveSpacerGroup client:load />
 					<ClientContainer client:load />
           <OpenSourceStatement />
           <p class="p-10" />
