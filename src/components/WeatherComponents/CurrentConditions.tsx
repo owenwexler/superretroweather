@@ -15,7 +15,7 @@ const CurrentConditions: FC<CurrentConditionsProps> = ({ conditions }) => {
   return (
     <div className="flex flex-col mt-5 items-center justify-center text-center">
       <h1 className="text-white text-3xl max-sm:text-xl">{formatDateMMDDYY(conditions.datetime)}</h1>
-      <div className="flex flex-row space-x-5 items-center justify-center">
+      <div className="flex flex-row space-x-5 items-center justify-center py-4">
         <WeatherConditionImage
           condition={conditionIcon}
           width={100}

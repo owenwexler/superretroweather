@@ -11,8 +11,15 @@ const MobileResponsiveSpacerGroup: FC = () => {
       <ClientSpacer size={10} />
       <ClientSpacer size={10} />
       <ClientSpacer size={10} />
+      <ClientSpacer size={10} />
+      <ClientSpacer size={10} />
       {/* this complete mess is required to make everything show up on mobile. */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
+        <ClientSpacer size={10} />
+        <ClientSpacer size={10} />
+        <ClientSpacer size={10} />
+        <ClientSpacer size={10} />
+        <ClientSpacer size={10} />
         <ClientSpacer size={10} />
         <ClientSpacer size={10} />
         <ClientSpacer size={10} />
@@ -21,12 +28,19 @@ const MobileResponsiveSpacerGroup: FC = () => {
         savedLocations.length > 3
         ?
         <>
-          <div className="md:hidden">
-            <ClientSpacer size={10} />
-            <ClientSpacer size={10} />
-            <ClientSpacer size={10} />
+          <div className="lg:hidden">
+            <ClientSpacer size={12} />
+            <ClientSpacer size={12} />
+            <ClientSpacer size={12} />
+            <ClientSpacer size={12} />
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden">
+            <ClientSpacer size={12} />
+            <ClientSpacer size={12} />
+            <ClientSpacer size={12} />
+            <ClientSpacer size={10} />
+            <ClientSpacer size={10} />
+            <ClientSpacer size={10} />
             <ClientSpacer size={10} />
           </div>
         </>

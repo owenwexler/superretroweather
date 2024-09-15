@@ -30,7 +30,7 @@ const SavedLocations: React.FC = () => {
         ?
         <>
           <ClientNavbarSeparator />
-          <section id="srw-saved-locations-section" className={`flex flex-row max-md:flex-col ${justifyClass} max-sm:justify-center items-center pl-3 pr-4 max-md:pl-1 max-md:pr-1 max-sm:space-y-2 py-3`}>
+          <section id="srw-saved-locations-section" className={`flex flex-row max-lg:flex-col ${justifyClass} max-sm:justify-center items-center pl-3 pr-4 max-md:pl-1 max-md:pr-1 max-sm:space-y-2 py-3`}>
             {
               locations.map(location => <button key={`saved-location-${location}`} className={clickableText} onClick={() => handleLocationLinkClick(location)}>{location}</button>)
             }

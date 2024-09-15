@@ -1,7 +1,7 @@
 ---
 import Navbar from "../components/Navbar/Navbar.astro";
-import NavbarSection from "../components/Navbar/NavbarSection.astro";
-import ResponsiveLogo from "../components/style/ResponsiveLogo.astro";
+import NavbarSection from "../components/Navbar/NavbarSection"
+import ResponsiveLogo from "../components/style/ResponsiveLogo";
 
 import Search from '../components/Navbar/Search';
 import ClientContainer from "../components/ClientContainer";
@@ -23,8 +23,8 @@ import AstroSpacer from "../components/AstroSpacer.astro";
 	</head>
 	<body>
 		<Navbar>
-			<NavbarSection>
-				<ResponsiveLogo />
+			<NavbarSection client:load>
+				<ResponsiveLogo client:load />
 				<Search client:load />
 			</NavbarSection>
       <SavedLocations client:load />

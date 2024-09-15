@@ -30,7 +30,7 @@ const SevenDayListItem: FC<SevenDayListItemProps> = ({ sevenDayListItem }) => {
 
   return (
     <div className="flex flex-col mt-2 items-center align-center text-center space-y-1">
-      <div className="flex flex-row items-center align-center space-x-12">
+      <div className="flex flex-row items-center align-center space-x-12 py-2">
         <WeatherConditionImage
           condition={condition}
           width={50}

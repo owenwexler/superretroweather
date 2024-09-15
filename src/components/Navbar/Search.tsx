@@ -31,7 +31,7 @@ const Search: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-row items-center justify-center space-x-5 max-md:space-x-8">
+    <div className="flex flex-row items-center justify-center space-x-5 max-md:space-x-8 max-md:pr-4">
       <input
         id="srw-search-input"
         type="text"
