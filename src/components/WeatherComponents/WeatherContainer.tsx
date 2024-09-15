@@ -24,6 +24,7 @@ const WeatherContainer: React.FC<WeatherContainerProps> = ({ location }) => {
   const typedBlankVCResponse = blankVCResponse as unknown as IVCWeatherResponse;
 
   // I haven't done an old-school useEffect fetch in so long I had to look up how to do it
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [data, setData] = useState<IVCWeatherResponse>(typedBlankVCResponse);
