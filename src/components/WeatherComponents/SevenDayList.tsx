@@ -10,13 +10,13 @@ interface SevenDayListProps {
 const SevenDayList: FC<SevenDayListProps> = ({ sevenDayList, location }) => {
   return (
     <div className="flex flex-col mt-9">
-      <h2 className="text-2xl mt-9 mb-2 text-white">SEVEN-DAY FORECAST</h2>
+      <h2 id="seven-day-header" className="text-2xl mt-9 mb-2 text-white">SEVEN-DAY FORECAST</h2>
       <div className='flex flex-col space-y-8'>
         {
           sevenDayList.map((item, idx) => {
             return (
               <SevenDayListItem
-                key={`seven-day-list-item-${location}-${idx}`}
+                key={`seven-day-list-item-${location}-${idx}-${item.datetimeStr}`}
                 sevenDayListItem={item}
               />
             )
