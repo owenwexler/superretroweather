@@ -33,6 +33,8 @@ SuperRetroWeather uses [Tailwind](https://tailwindcss.com/) for styling and CSS.
 ## Astro/Preact
 As of July 2024, SuperRetroWeather uses [Astro](https://www.astro.build) as its meta-framework with [Preact](https://preactjs.com/) on the client to power interactivity in all interactive [islands](https://docs.astro.build/en/concepts/islands/).  All evergreen Astro-related details are included below.
 
+NOTE: SuperRetroWeather is staying on Preact unless there is a compelling reason to move to React - pull requests moving the interactive portion of the codebase to React will be rejected unless a sufficiently compelling reason for the move is given.
+
 # Astro Starter Kit: Minimal
 
 ## 🚀 Project Structure
