@@ -15,10 +15,22 @@ As of September 2024, the current 8-bit weather images are from [Freepik.com](ht
 
 - As is customary with API keys, the API key is stored in .env, which is .gitignored.  Copy the .env.example file in this repo into a blank .env file, and insert your API key where it says ``FILL_ME_IN``.
 
-## REDIS
-SuperRetroWeather uses a REDIS cache to cache responses from the VisualCrossing API.  We use an Astro API route to check the REDIS cache with the ioredis library for a previously cached response (responses are cached for one hour), and gets a live API response and caches it for an hour if not cached.  SuperRetroWeather is set up to use local REDIS in development; you must have REDIS installed on your development machine.
+## Offline mode
+SuperRetroWeather has a built-in offline mode that uses pre-fetched VC API responses in JSON files instead of live VC API responses.  Activate this by setting DEV_MODE to "offline" in your .env file.
 
-## Astro/React
+## TypeScript
+SuperRetroWeather uses [TypeScript](https://www.typescriptlang.org/).  This is non-negotiable.  Any pull requests removing TypeScript from the project will be rejected.
+
+## REDIS
+SuperRetroWeather uses a REDIS cache to cache responses from the VisualCrossing API.  We use an Astro API route to check the REDIS cache with the ioredis library for a previously cached response (responses are cached for one hour), and gets a live API response and caches it for an hour if not cached.  SuperRetroWeather is set up to use local REDIS in development; you must have REDIS installed on your development machine.  SuperRetroWeather uses the ioredis package as a REDIS client on the frontend.
+
+## Nanostores
+SuperRetroWeather uses the [Nano Stores](https://github.com/nanostores/nanostores) package to manage state globally across the app.
+
+## Tailwind
+SuperRetroWeather uses [Tailwind](https://tailwindcss.com/) for styling and CSS.
+
+## Astro/Preact
 As of July 2024, SuperRetroWeather uses [Astro](https://www.astro.build) as its meta-framework with [Preact](https://preactjs.com/) on the client to power interactivity in all interactive [islands](https://docs.astro.build/en/concepts/islands/).  All evergreen Astro-related details are included below.
 
 # Astro Starter Kit: Minimal
@@ -31,10 +43,15 @@ Inside of your Astro project, you'll see the following folders and files:
 /
 ├── public/
 ├── src/
-│   └── components/
-│   └── pages/
+│   └── components/ - Astro and Preact components
+│   └── helper/ - helper functions for formatting dates, getting weather data, getting picture URLs, etc.
+│   └── data/ - the generic key used to persist saved locations to localStorage, static location and time data, and offline VC responses
+│   └── redis/ - REDIS code
+│   └── store/ - Nanostores code
+│   └── typedefs/ - TypeScript type definitions
+│   └── pages/ - all Astro pages, just the homepage right now
 |       └── api
-|         └── weather.ts
+|         └── weather.ts - frontend API routes that securely get responses from the REDIS cache if available or the live weather API if not
 │       └── index.astro
 └── package.json
 ```
