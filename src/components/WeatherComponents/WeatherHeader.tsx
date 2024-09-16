@@ -6,7 +6,7 @@ interface WeatherHeaderProps {
 
 const WeatherHeader: FC<WeatherHeaderProps> = ({ name }) => {
   return (
-    <h1 className="text-white text-3xl max-sm:text-xl">{name}</h1>
+    <h1 id="weather-header" className="text-white text-3xl max-sm:text-xl">{name}</h1>
   )
 }
 

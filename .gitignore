@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # stock images
 istock/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
