@@ -50,19 +50,19 @@ const checkCurrentConditions = async (page: Page, weatherObject: IVCWeatherRespo
   await expect(tempLoc).toHaveText(`${Math.round(temp)}º`);
 
   await expect(wspdLoc).toBeVisible();
-  await expect(wspdLoc).toHaveText(`${Math.round(wspd)}`);
+  await expect(wspdLoc).toHaveText(`WSPD: ${Math.round(wspd)}`);
 
   await expect(gustLoc).toBeVisible();
-  await expect(gustLoc).toHaveText(`${Math.round(wgust)}`);
+  await expect(gustLoc).toHaveText(`GUST: ${Math.round(wgust)}`);
 
   await expect(cloudcoverLoc).toBeVisible();
-  await expect(cloudcoverLoc).toHaveText(`${Math.round(cloudcover)}`);
+  await expect(cloudcoverLoc).toHaveText(`CLOUD COVER: ${Math.round(cloudcover)}`);
 
   await expect(humidityLoc).toBeVisible();
-  await expect(humidityLoc).toHaveText(`${Math.round(humidity)}`);
+  await expect(humidityLoc).toHaveText(`HUMIDITY: ${Math.round(humidity)}`);
 
   await expect(precipLoc).toBeVisible();
-  await expect(precipLoc).toHaveText(`${Math.round(precip)}`);
+  await expect(precipLoc).toHaveText(`PRECIP: ${Math.round(precip)}`);
 
   await expect(sunriseLoc).toBeVisible();
   await expect(sunriseLoc).toHaveText(/SUNRISE/);

@@ -73,7 +73,7 @@ const searchFor = async(page: Page, searchQuery: string) => {
 
   await searchInput.fill(searchQuery);
   await expect(searchInput).toHaveValue(searchQuery);
-  await searchButton.click();
+  await searchButton.click({ force: true });
 }
 
 export {
