@@ -28,12 +28,12 @@ test.describe('Core weather functions, mobile viewport', () => {
 
     await checkDefaultMessage(page, { exists: false });
     await checkCurrentConditions(page, dc as unknown as IVCWeatherResponse, 'Washington, DC');
-    await checkAllSevenDayListItems(page, dc.location.values as unknown as IVCWeatherDayValueSet[])
+    await checkAllSevenDayListItems(page, dc.location.values as unknown as IVCWeatherDayValueSet[]);
 
     await searchFor(page, 'Los Angeles, CA');
     await expect(page.locator('#saved-location-los-angeles-ca')).toBeVisible();
     await checkCurrentConditions(page, la as unknown as IVCWeatherResponse, 'Los Angeles, CA');
-    await checkAllSevenDayListItems(page, la.location.values as unknown as IVCWeatherDayValueSet[])
+    await checkAllSevenDayListItems(page, la.location.values as unknown as IVCWeatherDayValueSet[]);
 
     await page.reload(); // refresh the page
 
