@@ -1,7 +1,7 @@
 import test from "@playwright/test";
 import { setDesktopViewport, setMobileViewport, setTabletViewport, testNavbarExistence } from "./globalTestFunctions/globalTestFunctions";
 
-test.describe('Navbar elements, mobile viewport', () => {
+test.describe('Navbar elements', () => {
   test('constant navbar elements are rendered on a mobile viewport', async ({
     page,
   }) => {

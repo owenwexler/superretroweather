@@ -1,6 +1,7 @@
 import type { Page } from "playwright/test";
 
 import { expect } from '@playwright/test';
+import type { IVCWeatherResponse } from "../../src/typedefs/IVCWeatherResponse";
 
 const testLinkById = async (page: Page, id: string, href: string) => {
   await expect(page.locator(id)).toBeVisible();
@@ -66,6 +67,15 @@ const checkDefaultMessage = async (page: Page,  args: { exists: boolean }) => {
   }
 }
 
+const searchFor = async(page: Page, searchQuery: string) => {
+  const searchInput = page.locator('#srw-search-input');
+  const searchButton = page.locator('#srw-search-button');
+
+  await searchInput.fill(searchQuery);
+  await expect(searchInput).toHaveValue(searchQuery);
+  await searchButton.click();
+}
+
 export {
   setMobileViewport,
   setTabletViewport,
@@ -73,5 +83,6 @@ export {
   setGalaxyFoldViewport,
   testNavbarExistence,
   checkUrl,
-  checkDefaultMessage
+  checkDefaultMessage,
+  searchFor
 }
