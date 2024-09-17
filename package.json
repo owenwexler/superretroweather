@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "SuperRetroWeather",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "scripts": {
     "dev": "astro dev",
     "dev:offline": "DEV_MODE=\"offline\" npm run dev",

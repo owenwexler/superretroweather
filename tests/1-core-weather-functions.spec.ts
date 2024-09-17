@@ -1,9 +1,11 @@
 import test from "@playwright/test";
 import { checkDefaultMessage, searchFor, setTabletViewport } from "./globalTestFunctions/globalTestFunctions";
 
-import dc from '../src/data/VCMockData/dc.json';
 import { checkCurrentConditions } from "./globalTestFunctions/weatherTestFunctions";
 import type { IVCWeatherResponse } from "../src/typedefs/IVCWeatherResponse";
+import { getOfflineWeatherData } from "../src/helper/getOfflineWeatherData";
+
+import { dc } from '../src/data/VCMockData/dc';
 
 test.describe('Core weather functions, mobile viewport', () => {
   test.beforeEach(async ({page}) => {

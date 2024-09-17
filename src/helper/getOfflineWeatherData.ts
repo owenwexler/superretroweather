@@ -1,14 +1,15 @@
 import { sleep } from './sleep';
 
-import dallas from '../data/VCMockData/dallas.json';
-import dc from '../data/VCMockData/dc.json';
-import denver from '../data/VCMockData/denver.json';
-import la from '../data/VCMockData/la.json';
-import malaga from '../data/VCMockData/malaga.json';
-import nashville from '../data/VCMockData/nashville.json';
-import orlando from '../data/VCMockData/orlando.json';
-import toronto from '../data/VCMockData/toronto.json';
-import vb from '../data/VCMockData/vb.json';
+import { dallas } from '../data/VCMockData/dallas';
+import { dc } from '../data/VCMockData/dc';
+import { denver } from '../data/VCMockData/denver';
+import { la } from '../data/VCMockData/la';
+import { malaga } from '../data/VCMockData/malaga';
+import { nashville } from '../data/VCMockData/nashville';
+import { orlando } from '../data/VCMockData/orlando';
+import { toronto } from '../data/VCMockData/toronto';
+import { vb } from '../data/VCMockData/vb';
+
 
 import blankVCResponse from '../data/blankVCResponse.json';
 
