@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:offline": "DEV_MODE=\"offline\" npm run dev",
-    "start": "astro dev",
+    "start": "node ./dist/server/entry.mjs",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
