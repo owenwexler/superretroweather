@@ -16,7 +16,7 @@ As of September 2024, the current 8-bit weather images are from [Freepik.com](ht
 - As is customary with API keys, the API key is stored in .env, which is .gitignored.  Copy the .env.example file in this repo into a blank .env file, and insert your API key where it says ``FILL_ME_IN``.
 
 ## Offline mode
-SuperRetroWeather has a built-in offline mode that uses pre-fetched VC API responses in JSON files instead of live VC API responses.  Activate this by setting DEV_MODE to "offline" in your .env file.
+SuperRetroWeather has a built-in offline mode that uses pre-fetched VC API responses in JSON files instead of live VC API responses.  Activate this by setting DEV_MODE to "offline" in your .env file or run ``npm run dev::offline`` instead of ``npm run dev``.
 NOTE: setting DEV_MODE to "offline" is required before running the end-to-end tests, as tests are run against static offline weather responses and there is no way to consistently test against live weather API responses.
 
 ## Tests
