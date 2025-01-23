@@ -138,16 +138,16 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/owenwe
 include Setup of env, IDE and typical getting started instructions?
 -->
 - Install [Node.js](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) if you have not already.  Make sure you are using at minimum Node version 18 and NPM version 6.
-- Install [REDIS](https://redis.io/) if you have not already.  SuperRetroWeather uses a REDIS cache to cache responses from the weather API for an hour to de-dup requests to the weather API.  The SuperRetroWeather dev environment is set up to use local REDIS in development.  Follow the instructions in the REDIS documentation for installing REDIS locally and make sure it's running on port 6379.  Alternately, you can use a service like [Upstash](https://upstash.com/) if you do not want to install REDIS locally.
+- Install [REDIS](https://redis.io/) if you have not already.  SuperRetroWeather uses a REDIS cache to cache responses from the weather API for an hour to de-dup requests to the weather API.  The SuperRetroWeather dev environment is set up to use local REDIS in development.  Follow the instructions in the REDIS documentation for installing REDIS locally and make sure it's running on port 6379.  Alternately, you can use a service like [Redis Cloud](https://redis.io/) if you do not want to install REDIS locally.
 - Install the [Astro](https://astro.build/) extension for your editor of choice if applicable for code formatting and syntax highlighting.
-- [Visual Studio Code](https://code.visualstudio.com/) is recommended as an IDE since it has an Astro extension, but any IDE can be used.
+- [Visual Studio Code](https://code.visualstudio.com/) is recommended as an IDE since it has an Astro extension that is tested and confirmed to be working, but any IDE can be used.
 - Create a [VisualCrossing Weather Services](https://www.visualcrossing.com/weather/weather-data-services#/login) account and get an API key for their weather API.
 - Fork and clone the [SuperRetroWeather repo](https://github.com/owenwexler/superretroweather).
 - Run ``npm install`` to install all packages used.
 - Create a .env file using the included .env.example file as a template.  Add your VC API key to the VC_API_KEY field.  If you are using local REDIS, you can leave the REDIS_CONNECTION field blank.  If you are using a REDIS cloud service, add the URL to that field.
-- Run the end-to-end tests using ``npm run test:e2e`` or ``npm run test:e2e:ui`` and make sure they are all passing.
-- Run ``npm run dev`` to run the project in development mode and ``npm run build`` to create a local production build.
 - If you wish to use the offline mode with prefetched VC API responses instead of live API responses, set DEV_MODE to "offline" in your .env file.
+- Run the end-to-end tests using ``npm run test:e2e`` or ``npm run test:e2e:ui`` and make sure they are all passing (for end-to-end testing, DEV_MODE must be set to "offline" as the end-to-end tests run against pre-fetched offline responses).
+- Run ``npm run dev`` to run the project in development mode and ``npm run build`` to create a local production build.
 - Create your own branch for any contributions and send a pull request to the main repo.
 
 ## Styleguides

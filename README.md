@@ -17,6 +17,7 @@ As of September 2024, the current 8-bit weather images are from [Freepik.com](ht
 
 ## Offline mode
 SuperRetroWeather has a built-in offline mode that uses pre-fetched VC API responses in JSON files instead of live VC API responses.  Activate this by setting DEV_MODE to "offline" in your .env file.
+NO
 
 ## Tests
 SuperRetroWeather uses [Playwright](https://playwright.dev/) as its testing framework.  Tests must be run in offline mode for the tests to pass as tests are run against the static offline weather responses, not live API responses.  The command ``npm:test:e2e:run`` starts the dev server in offline mode and runs the tests using the Playwright CLI.  The command ``npm test:e2e:ui`` starts the dev server in offline mode and runs the tests using the Playwright UI.  Make sure any other instances of the dev server are stopped before running the tests.
