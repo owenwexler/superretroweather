@@ -11,11 +11,8 @@ interface WeatherConditionImageProps {
 
 const WeatherConditionImage: FC<WeatherConditionImageProps> = ({ imageId, condition, width, height }) => {
   const { PUBLIC_CLIENT_ENV } = import.meta.env;
-  console.log('env: ', import.meta.env)
 
   const environment = PUBLIC_CLIENT_ENV && ['development', 'production'].includes(PUBLIC_CLIENT_ENV) ? PUBLIC_CLIENT_ENV.toString() : 'production';
-  
-  console.log('environment: ', environment);
 
   const picName = getPicNameFromCondition(condition);
 

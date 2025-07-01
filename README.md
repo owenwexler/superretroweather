@@ -2,6 +2,14 @@
 ## An open-source 8-bit weather app by Owen Wexler
 SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro experience that takes you right back to the good old days of the Nintendo Entertainment System. Just type your location into the search box and you can get a variety of weather data for your city in a fun nostalgic 8-bit package. As an added bonus, the app also remembers the last five locations you visited!
 
+## Setup
+1.  Make sure you have [Node](https://nodejs.org/) and [REDIS](https://redis.io/lp/get-started2) installed locally.  In some Linux distributions, REDIS is replaced by Valkey under the hood - this shouldn't cause any problems in development.  Please submit an issue if it does.
+2.  Sign up for a VisualCrossing account and get an API key (instructions for doing so below)
+3.  Create a ```.env``` file and set up all environment variables according to the ```.env.example``` file.  Fill in the API key you got from VisualCrossing in VC_API_KEY.  Leave the REDIS_CONNECTION variable blank ('') for local REDIS in development.  PUBLIC_CLIENT_ENV is necessary to determine whether the environment is development or production in client components.  Set DEV_MODE to "offline" before running the tests.   
+4.  Install all dependencies by typing ```npm install```.  
+5.  Run the development server in offline mode by typing ```npm run dev:offline```.
+6.  Run the tests in UI mode by typing ```npm run test:e2e:ui``` or in CLI mode by typing ```npm run test:```.  Make sure they all pass.
+
 ## Font
 SuperRetroWeather uses the [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) font from Google Fonts.  We self-host the font for offline use and to guarantee perpetual availability in production, but we will also include, commented out, a link in the index to get the font directly from Google Fonts if you so desire.  The self-hosted font is included in the repo, which is necessary for it to be self-hosted on the app server as well.
 
@@ -20,7 +28,7 @@ SuperRetroWeather has a built-in offline mode that uses pre-fetched VC API respo
 NOTE: setting DEV_MODE to "offline" is required before running the end-to-end tests, as tests are run against static offline weather responses and there is no way to consistently test against live weather API responses.
 
 ## Tests
-SuperRetroWeather uses [Playwright](https://playwright.dev/) as its testing framework.  Tests must be run in offline mode as detailed above for the tests to pass as tests are run against the static offline weather responses, not live API responses.  The command ``npm:test:e2e:run`` starts the dev server in offline mode and runs the tests using the Playwright CLI.  The command ``npm test:e2e:ui`` starts the dev server in offline mode and runs the tests using the Playwright UI.  Make sure any other instances of the dev server are stopped before running the tests.
+SuperRetroWeather uses [Playwright](https://playwright.dev/) as its testing framework.  Tests must be run in offline mode as detailed above for the tests to pass as tests are run against the static offline weather responses, not live API responses. 
 
 ## TypeScript
 SuperRetroWeather uses [TypeScript](https://www.typescriptlang.org/).  This is non-negotiable.  Any pull requests removing TypeScript from the project will be rejected.
