@@ -8,7 +8,7 @@ SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro ex
 3.  Create a ```.env``` file and set up all environment variables according to the ```.env.example``` file.  Fill in the API key you got from VisualCrossing in VC_API_KEY.  Leave the REDIS_CONNECTION variable blank ('') for local REDIS in development.  PUBLIC_CLIENT_ENV is necessary to determine whether the environment is development or production in client components.  Set DEV_MODE to "offline" before running the tests.   
 4.  Install all dependencies by typing ```npm install```.  
 5.  Run the development server in offline mode by typing ```npm run dev:offline```.
-6.  Run the tests in UI mode by typing ```npm run test:e2e:ui``` or in CLI mode by typing ```npm run test:```.  Make sure they all pass.
+6.  Run the tests in UI mode by typing ```npm run test:e2e:ui``` or in CLI mode by typing ```npm run test:e2e:run```.  Make sure they all pass.
 
 ## Font
 SuperRetroWeather uses the [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) font from Google Fonts.  We self-host the font for offline use and to guarantee perpetual availability in production, but we will also include, commented out, a link in the index to get the font directly from Google Fonts if you so desire.  The self-hosted font is included in the repo, which is necessary for it to be self-hosted on the app server as well.
