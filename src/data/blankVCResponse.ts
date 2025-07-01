@@ -1,4 +1,6 @@
-const blankVCResponse = {
+import type { IVCWeatherResponse } from "../typedefs/IVCWeatherResponse"
+
+const blankVCResponse: IVCWeatherResponse = {
   columns: {
     temp: {
       id: '',
