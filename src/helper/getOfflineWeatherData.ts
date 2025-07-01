@@ -10,8 +10,7 @@ import { orlando } from '../data/VCMockData/orlando';
 import { toronto } from '../data/VCMockData/toronto';
 import { vb } from '../data/VCMockData/vb';
 
-
-import blankVCResponse from '../data/blankVCResponse.json';
+import { blankVCResponse } from '../data/blankVCResponse';
 
 import type { IOfflineWeatherDataLookup } from '../typedefs/IOfflineWeatherData';
 import type { IVCWeatherResponse } from '../typedefs/IVCWeatherResponse';

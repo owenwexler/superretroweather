@@ -12,7 +12,7 @@ const checkWeatherImage = async (page: Page, id: string, icon: string | null | u
   const picName = getPicNameFromCondition(icon ? icon as TConditionImageType : 'clear');
 
   await expect(page.locator(id)).toBeVisible()
-  await expect(page.locator(id)).toHaveAttribute('src', `/images/weather/${picName}?url&jsx`)
+  await expect(page.locator(id)).toHaveAttribute('src', `/public/images/weather/${picName}?url&jsx`)
 }
 
 const checkCurrentConditions = async (page: Page, weatherObject: IVCWeatherResponse, header: string) => {

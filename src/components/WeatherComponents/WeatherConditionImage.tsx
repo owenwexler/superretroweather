@@ -15,7 +15,7 @@ const WeatherConditionImage: FC<WeatherConditionImageProps> = ({ imageId, condit
   return (
     <img
       id={imageId}
-      src={`/images/weather/${picName}?url&jsx`}
+      src={`/public/images/weather/${picName}?url&jsx`}
       alt={condition}
       height={height}
       width={width}
