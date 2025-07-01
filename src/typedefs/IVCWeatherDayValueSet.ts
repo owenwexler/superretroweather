@@ -16,7 +16,7 @@ interface IVCWeatherDayValueSet {
   humidity: number;
   wgust: number;
   conditions: string;
-  windchill: null
+  windchill: number | null
 }
 
 export type {

@@ -17,7 +17,7 @@ interface ICurrentConditions {
   sunset: string;
   humidity: number;
   wgust: number;
-  windchill: string | null
+  windchill: number | null
 }
 
 export type {
