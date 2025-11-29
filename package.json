@@ -20,7 +20,7 @@
     "@astrojs/tailwind": "^5.1.5",
     "@nanostores/preact": "^0.5.1",
     "@playwright/test": "^1.49.1",
-    "astro": "^5.1.8",
+    "astro": "^5.16.3",
     "ioredis": "^5.4.1",
     "nanostores": "^0.10.3",
     "preact": "^10.23.1",
