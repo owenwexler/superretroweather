@@ -2,10 +2,34 @@
 ## An open-source 8-bit weather app by Owen Wexler
 SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro experience that takes you right back to the good old days of the Nintendo Entertainment System. Just type your location into the search box and you can get a variety of weather data for your city in a fun nostalgic 8-bit package. As an added bonus, the app also remembers the last five locations you visited!
 
-## Setup
+## Tech Stack
+We are in the middle of migrating the entire app from Astro and Preact to Tanstack Start.
+
+### Target stack:
+Language: TypeScript
+Runtime: Node
+Framework: Tanstack Start (was Astro/Preact)
+CSS Library: Tailwind
+UI Library: none, all buttons and inputs are custom 
+Database: localStorage for persisting saved locations, otherwise none
+ORM: none
+Cache: REDIS for caching weather API responses
+Weather API: VisualCrossing Weather API
+Custom font: Press Start 2P (from Google Fonts, self-hosted)
+Error-handling library: none
+Logging: none
+Environment Variable Validation: none
+Linting: ESLint
+Client state management: Jotai (was Nanostores)
+CI: none
+Deployment target: Render.com
+
+Currently, the project is a Tanstack Start scaffold with all the target stack dependencies in place and the components from the old Astro/Preact codebase. 
+
+## Setup 
 1.  Make sure you have [Node](https://nodejs.org/) and [REDIS](https://redis.io/lp/get-started2) installed locally.  In some Linux distributions, REDIS is replaced by Valkey under the hood - this shouldn't cause any problems in development.  Please submit an issue if it does.
 2.  Sign up for a VisualCrossing account and get an API key (instructions for doing so below)
-3.  Create a ```.env``` file and set up all environment variables according to the ```.env.example``` file.  Fill in the API key you got from VisualCrossing in VC_API_KEY.  Leave the REDIS_CONNECTION variable blank ('') for local REDIS in development.  PUBLIC_CLIENT_ENV is necessary to determine whether the environment is development or production in client components.  Set DEV_MODE to "offline" before running the tests.   
+3.  Create a ```.env``` file and set up all environment variables according to the ```.env.example``` file.  Fill in the API key you got from VisualCrossing in VC_API_KEY.  Leave the REDIS_CONNECTION variable blank ('') for local REDIS in development.  SRW_ENV is necessary to determine whether the environment is development or production in client components.  Set DEV_MODE to "offline" before running the tests.   
 4.  Install all dependencies by typing ```npm install```.  
 5.  Run the development server in offline mode by typing ```npm run dev:offline```.
 6.  Run the tests in UI mode by typing ```npm run test:e2e:ui``` or in CLI mode by typing ```npm run test:e2e:run```.  Make sure they all pass.

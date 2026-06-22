@@ -1,17 +1,17 @@
-import type { FC } from "preact/compat";
-import ResponsiveLogoText from "./ResponsiveLogoText";
+import type { FC } from 'react';
+import ResponsiveLogoText from './ResponsiveLogoText';
 
 const ResponsiveLogo: FC = () => {
   return (
     <>
-      <div id="responsive-logo-mobile" class="md:hidden">
+      <div id="responsive-logo-mobile" className="md:hidden">
         <a href="/">
           <ResponsiveLogoText id="responsive-logo-text-mobile">
             SuperRetroWeather
           </ResponsiveLogoText>
         </a>
       </div>
-      <div id="responsive-logo-tablet" class="max-md:hidden">
+      <div id="responsive-logo-tablet" className="max-md:hidden">
         <a href="/">
           <ResponsiveLogoText id="responsive-logo-text-tablet">
             SuperRetroWeather

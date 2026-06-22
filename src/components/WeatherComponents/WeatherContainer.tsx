@@ -6,7 +6,7 @@ import SevenDayList from './SevenDayList';
 
 import { blankVCResponse } from '../../data/blankVCResponse';
 
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect } from 'react';
 
 import type { IVCWeatherResponse } from '../../typedefs/IVCWeatherResponse';
 

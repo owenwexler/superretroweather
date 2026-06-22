@@ -1,0 +1,11 @@
+import React from 'react';
+
+const Navbar = () => {
+  return (
+    <nav id="srw-navbar-outer" class="fixed w-full top-0 z-50 bg-black border-b border-b-4 border-b-white">
+      <slot />
+    </nav>
+  )
+}
+
+export default Navbar;

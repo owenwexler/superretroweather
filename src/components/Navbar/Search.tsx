@@ -4,7 +4,7 @@ import { srwTransparentInput } from '../style/twClasses/inputClasses';
 import { srwTransparentButton } from '../style/twClasses/buttonClasses';
 import { addLocation } from '../../helper/savedLocationFunctions';
 import { LOCAL_STORAGE_KEY } from '../../data/localStorageKey';
-import { useState } from 'preact/hooks';
+import { useState } from 'react';
 
 
 const Search: React.FC = () => {
