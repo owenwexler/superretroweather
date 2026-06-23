@@ -1,5 +1,5 @@
+import { getOfflineWeatherData } from "#/offlineWeatherData/offlineWeatherData";
 import type { IVCWeatherResponse } from "../typedefs/IVCWeatherResponse";
-import { getOfflineWeatherData } from "./getOfflineWeatherData";
 
 interface IGetVCWeatherDataAdditionalArgs {
   viteEnv: 'development' | 'production',

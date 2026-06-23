@@ -1,14 +1,33 @@
 import { createFileRoute } from '@tanstack/react-router'
+import NavbarSection from '#/components/Navbar/NavbarSection';
+import Navbar from '#/components/Navbar/Navbar';
+import ResponsiveLogo from '#/components/style/ResponsiveLogo';
+import Search from '#/components/Navbar/Search';
+import SavedLocations from '#/components/Navbar/SavedLocations';
+import MobileResponsiveSpacerGroup from '#/components/MobileResponsiveSpacerGroup';
+import OpenSourceStatement from '#/components/OpenSourceStatement';
 
 export const Route = createFileRoute('/')({ component: Home })
 
 function Home() {
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-bold">Welcome to TanStack Start</h1>
-      <p className="mt-4 text-lg">
-        Edit <code>src/routes/index.tsx</code> to get started.
-      </p>
-    </div>
+    <>
+      <Navbar>
+        <NavbarSection>
+          <ResponsiveLogo />
+          <Search />
+        </NavbarSection>
+        <SavedLocations />
+      </Navbar>
+      <main>
+        <section className="flex min-h-screen flex-col items-center justify-start mt-10">
+          <div className="flex h-screen w-4/6 max-sm:w-full max-sm:p-3 flex-col items-center justify-start py-9 max-sm:py-9 pb-10">
+            <MobileResponsiveSpacerGroup />
+            <OpenSourceStatement />
+            <p className="p-10" />
+          </div>
+				</section>
+			</main>
+    </>
   )
 }

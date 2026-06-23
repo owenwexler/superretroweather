@@ -4,6 +4,11 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import appCss from '../styles.css?url'
 
+const TITLE = 'SuperRetroWeather';
+const DESCRIPTION = 'A free open-source 8-bit weather app.';
+const URL = 'https://superretroweather.onrender.com/';
+const OG_IMAGE = '/images/SRW_OG_LOGO.png';
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -15,14 +20,31 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: TITLE,
+        description: DESCRIPTION 
       },
+      { property: 'og:title', content: TITLE },
+      { property: 'og:description', content: DESCRIPTION },
+      { property: 'og:url', content: URL },
+      { property: 'og:image', content: OG_IMAGE },
+      { property: 'og:type', content: 'website' },
+      
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:url', content: URL },
+      { property: 'twitter:title', content: TITLE },
+      { property: 'twitter:description', content: DESCRIPTION },
+      { property: 'twitter:image', content: OG_IMAGE },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
       },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon.png',
+      }
     ],
   }),
   shellComponent: RootDocument,

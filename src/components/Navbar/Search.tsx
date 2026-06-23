@@ -1,5 +1,5 @@
-import { useStore } from '@nanostores/preact';
-import { $currentLocation, $savedLocations } from '../../store/weatherStore';
+import { useAtom } from 'jotai';
+import { currentLocationAtom, savedLocationsAtom } from '../../store/weatherStore';
 import { srwTransparentInput } from '../style/twClasses/inputClasses';
 import { srwTransparentButton } from '../style/twClasses/buttonClasses';
 import { addLocation } from '../../helper/savedLocationFunctions';
@@ -8,8 +8,8 @@ import { useState } from 'react';
 
 
 const Search: React.FC = () => {
-  const currentLocation = useStore($currentLocation);
-  const savedLocations = useStore($savedLocations);
+  const [currentLocation, setCurrentLocation] = useAtom(currentLocationAtom);
+  const [savedLocations, setSavedLocations] = useAtom(savedLocationsAtom);
 
   const [value, setValue] = useState('');
 
@@ -22,9 +22,9 @@ const Search: React.FC = () => {
       return;
     }
 
-    $currentLocation.set(value);
+    setCurrentLocation(value);
     const newSavedLocations = addLocation(value, savedLocations);
-    $savedLocations.set(newSavedLocations);
+    setSavedLocations(newSavedLocations);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newSavedLocations));
 
     setValue('');

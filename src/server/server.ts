@@ -1,5 +1,7 @@
 import { env } from "#/env";
 import redis from "#/redis/redis";
+import type { IVCWeatherResponse } from "#/typedefs/IVCWeatherResponse";
+import { getVCWeatherData } from "#/VC/VC";
 import { createServerFn } from '@tanstack/react-start';
 import z from "zod";
 
@@ -10,9 +12,9 @@ export const getSRWEnv = createServerFn({ method: 'GET' })
     return env.SRW_ENV;
   });
 
-export const getWeatherData = createServerFn({ method: 'POST' })
-  .validator(z.object({ title: z.string().min(1) }))
-  .handler(async ({ data, context }) => {
+export const getWeatherData = createServerFn({ method: 'GET' })
+  .validator(z.object({ location: z.string().min(1) }))
+  .handler(async ({ data }) => {
     const CACHE_KEY_PREFIX = 'srwcache::';
 
     const { location } = data;
@@ -33,7 +35,7 @@ export const getWeatherData = createServerFn({ method: 'POST' })
       const cacheResponse = await redis.get(cacheKey);
 
       if (cacheResponse) {
-        return cacheResponse;
+        return cacheResponse as IVCWeatherResponse;
       } else {
         const weatherResponse = await getVCWeatherData(location, {
           viteEnv,

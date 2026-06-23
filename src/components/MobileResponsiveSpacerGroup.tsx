@@ -1,9 +1,10 @@
-import { $savedLocations } from '../store/weatherStore';
+import { useAtom } from 'jotai';
+import { savedLocationsAtom } from '../store/weatherStore';
 import ClientSpacer from './ClientSpacer';
 import type { FC } from 'react';
 
 const MobileResponsiveSpacerGroup: FC = () => {
-  const savedLocations = useStore($savedLocations);
+  const [savedLocations, setSavedLocations] = useAtom(savedLocationsAtom);
 
   return (
     <>
