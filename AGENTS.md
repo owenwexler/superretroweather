@@ -16,8 +16,7 @@ Font: Press Start 2P (self-hosted)
 5. Following the aspiration for a snappy native-app-like user experience, optimistic updates should be used as much as possible on both web and mobile to provide the appearance of instant results to the user.  Optimistically updated elements must nonetheless be distinct from stable UI elements, usually through a pulsing animation and/or a "posting..." message, usually controlled by an "isOptimistic" boolean flag on the element's underlying data object.  Where optimistic updates are not possible, user feedback should be utilized as described above.
 6. Proper rollback on server error must be in place for any optimistic updates.  Never leave the optimistic results of an errored async function in the UI and always inform the user of an error via feedback in the UI.
 7.  We expect that our user base will be accessing our apps from all manner of internet speeds and devices.  We should always optimize with slow Internet and low-end phones in mind as much as possible.
-8.  To that end, graphics and images load slowly.  We should use images as sparingly as possible and prefer vector images when we do use images, as much as possible.
-9.  Native mobile apps should be local-first and offline-first as a rule.
+8.  Native mobile apps should be local-first and offline-first as a rule.
 
 # FILE & FOLDER STRUCTURE
 The following directory tree is canonical for this project.  AI agents and contributors must place all new files in the correct location.  If a new category of file does not fit an existing directory, document the reason for the new directory in a code comment at the top of the first file placed there, and add the new directory to this tree.

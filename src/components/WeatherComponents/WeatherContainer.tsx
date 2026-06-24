@@ -9,6 +9,8 @@ import { blankVCResponse } from '../../data/blankVCResponse';
 import { useState, useEffect } from 'react';
 
 import type { IVCWeatherResponse } from '../../typedefs/IVCWeatherResponse';
+import { useQuery } from '@tanstack/react-query';
+import { getWeatherData } from '#/server/server';
 
 interface WeatherContainerProps {
   location: string;
@@ -21,27 +23,14 @@ const fetchWeatherData = async (location: string) => {
 }
 
 const WeatherContainer: React.FC<WeatherContainerProps> = ({ location }) => {
-  // I haven't done an old-school useEffect fetch in so long I had to look up how to do it
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-  const [data, setData] = useState<IVCWeatherResponse>(blankVCResponse);
-  const [error, setError] = useState<{error: string}>({ error: '' });
+  const { data, isLoading, error, isError } = useQuery({
+    queryKey: ['srw', location],
+    queryFn: () => getWeatherData({ location }), // Execute server function
+    staleTime: 1000 * 60 * 5,
+    gcTime: 1000 * 60 * 5
+  })
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetchWeatherData(location)
-      .then(data => {
-        setData(data);
-        setIsLoading(false);
-      })
-      .catch(error => {
-        console.error(error);
-        setError(error);
-        setIsError(true);
-        setIsLoading(false);
-      })
-  }, [location]);
 
   if (isLoading) {
     return <Loading />

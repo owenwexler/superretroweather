@@ -14,20 +14,30 @@ export const getSRWEnv = createServerFn({ method: 'GET' })
 
 export const getWeatherData = createServerFn({ method: 'GET' })
   .validator(z.object({ location: z.string().min(1) }))
-  .handler(async ({ data }) => {
-    const CACHE_KEY_PREFIX = 'srwcache::';
-
+  .handler(async ({ data }): Promise<IVCWeatherResponse | { error: unknown }> => {
     const { location } = data;
 
+    const CACHE_KEY_PREFIX = 'srwcache::';
+
     if (!location || location === '') {
-      return new Response(null, {
-        status: 404,
-        statusText: 'Location missing'
-      })
+      return {
+        error: 'Location missing'
+      }
     }
 
-    const viteEnv = env.SRW_ENV === 'development' ? 'development' : 'production';
-    const devMode = env.DEV_MODE === 'offline' ? 'offline' : 'online';
+    const viteEnv = 
+      env.SRW_ENV === 'development' 
+      ? 
+        'development' 
+      : 
+        'production';
+
+    const devMode = 
+      env.DEV_MODE === 'offline' 
+      ? 
+        'offline' 
+      : 
+        'online';
 
     const cacheKey = `${CACHE_KEY_PREFIX}${location}`;
 
@@ -35,7 +45,7 @@ export const getWeatherData = createServerFn({ method: 'GET' })
       const cacheResponse = await redis.get(cacheKey);
 
       if (cacheResponse) {
-        return cacheResponse as IVCWeatherResponse;
+        return cacheResponse as unknown as IVCWeatherResponse;
       } else {
         const weatherResponse = await getVCWeatherData(location, {
           viteEnv,
