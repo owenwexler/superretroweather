@@ -13,21 +13,35 @@ const Search: React.FC = () => {
 
   const [value, setValue] = useState('');
 
+  const setInputValue = (val: string) => {
+    setCurrentLocation(val);
+    const newSavedLocations = addLocation(val, savedLocations);
+    setSavedLocations(newSavedLocations);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newSavedLocations));
+
+    setValue('');
+  }
+
   const onInput = (e: any) => {
     setValue(e.currentTarget.value)
   }
+
+  const handleKeyUp = (e: any) => {
+    if (e.key === 'Enter') {
+      if (value === '') {
+        return;
+      }
+
+      setInputValue(value);
+    }
+  };
 
   const handleClick = () => {
     if (value === '') {
       return;
     }
 
-    setCurrentLocation(value);
-    const newSavedLocations = addLocation(value, savedLocations);
-    setSavedLocations(newSavedLocations);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newSavedLocations));
-
-    setValue('');
+    setInputValue(value);
   }
 
   return (
@@ -37,6 +51,7 @@ const Search: React.FC = () => {
         type="text"
         value={value}
         onInput={onInput}
+        onKeyUp={handleKeyUp}
         className={srwTransparentInput}
         placeholder="Enter location..."
       />
