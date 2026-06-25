@@ -7,6 +7,7 @@ import SavedLocations from '#/components/Navbar/SavedLocations';
 import MobileResponsiveSpacerGroup from '#/components/MobileResponsiveSpacerGroup';
 import OpenSourceStatement from '#/components/OpenSourceStatement';
 import ClientContainer from '#/components/ClientContainer';
+import { env } from '#/env';
 
 export const Route = createFileRoute('/')({ component: Home })
 

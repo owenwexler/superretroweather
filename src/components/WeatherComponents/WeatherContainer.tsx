@@ -4,11 +4,6 @@ import CurrentConditions from './CurrentConditions';
 import WeatherHeader from './WeatherHeader';
 import SevenDayList from './SevenDayList';
 
-import { blankVCResponse } from '../../data/blankVCResponse';
-
-import { useState, useEffect } from 'react';
-
-import type { IVCWeatherResponse } from '../../typedefs/IVCWeatherResponse';
 import { useQuery } from '@tanstack/react-query';
 import { getWeatherData } from '#/server/server';
 
@@ -16,20 +11,13 @@ interface WeatherContainerProps {
   location: string;
 }
 
-const fetchWeatherData = async (location: string) => {
-  const response = await fetch(`/api/weather?location=${location.split(' ').join('%20')}`);
-  const data = await response.json();
-  return data;
-}
-
 const WeatherContainer: React.FC<WeatherContainerProps> = ({ location }) => {
-
   const { data, isLoading, error, isError } = useQuery({
     queryKey: ['srw', location],
-    queryFn: () => getWeatherData({ location }), // Execute server function
+    queryFn: () => getWeatherData({ data: { location } }),
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 5
-  })
+  });
 
 
   if (isLoading) {
@@ -37,6 +25,11 @@ const WeatherContainer: React.FC<WeatherContainerProps> = ({ location }) => {
   }
 
   if (isError) {
+    console.error(error);
+    return <Error />
+  }
+
+  if (!data || 'error' in data) {
     console.error(error);
     return <Error />
   }

@@ -14,7 +14,7 @@ export const getSRWEnv = createServerFn({ method: 'GET' })
 
 export const getWeatherData = createServerFn({ method: 'GET' })
   .validator(z.object({ location: z.string().min(1) }))
-  .handler(async ({ data }): Promise<IVCWeatherResponse | { error: unknown }> => {
+  .handler(async ({ data }): Promise<IVCWeatherResponse | { error: string }> => {
     const { location } = data;
 
     const CACHE_KEY_PREFIX = 'srwcache::';
@@ -61,7 +61,7 @@ export const getWeatherData = createServerFn({ method: 'GET' })
       }
     } catch (error) {
       console.error(error);
-      const responseObj = { error: error }
+      const responseObj = { error: String(error) }
       return responseObj;
     }
   });
