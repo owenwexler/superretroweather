@@ -3,11 +3,10 @@ import { checkDefaultMessage, searchFor, setTabletViewport } from "./globalTestF
 
 import { checkAllSevenDayListItems, checkCurrentConditions } from "./globalTestFunctions/weatherTestFunctions";
 import type { IVCWeatherResponse } from "../src/typedefs/IVCWeatherResponse";
-import { getOfflineWeatherData } from "../src/helper/getOfflineWeatherData";
 
-import { dc } from '../src/data/VCMockData/dc';
-import { la } from '../src/data/VCMockData/la';
 import type { IVCWeatherDayValueSet } from "../src/typedefs/IVCWeatherDayValueSet";
+import { dc } from "#/offlineWeatherData/VCMockData/dc";
+import { la } from "#/offlineWeatherData/VCMockData/la";
 
 test.describe('Core weather functions, mobile viewport', () => {
   test.beforeEach(async ({page}) => {
@@ -27,13 +26,13 @@ test.describe('Core weather functions, mobile viewport', () => {
     await expect(page.locator('#saved-location-washington-dc')).toBeVisible();
 
     await checkDefaultMessage(page, { exists: false });
-    await checkCurrentConditions(page, dc as unknown as IVCWeatherResponse, 'Washington, DC');
-    await checkAllSevenDayListItems(page, dc.location.values as unknown as IVCWeatherDayValueSet[]);
+    await checkCurrentConditions(page, dc, 'Washington, DC');
+    await checkAllSevenDayListItems(page, dc.location.values);
 
     await searchFor(page, 'Los Angeles, CA');
     await expect(page.locator('#saved-location-los-angeles-ca')).toBeVisible();
     await checkCurrentConditions(page, la as unknown as IVCWeatherResponse, 'Los Angeles, CA');
-    await checkAllSevenDayListItems(page, la.location.values as unknown as IVCWeatherDayValueSet[]);
+    await checkAllSevenDayListItems(page, la.location.values);
 
     await page.reload(); // refresh the page
 
@@ -41,11 +40,11 @@ test.describe('Core weather functions, mobile viewport', () => {
     await expect(page.locator('#saved-location-los-angeles-ca')).toBeVisible();
 
     await page.locator('#saved-location-washington-dc').click({ force: true });
-    await checkCurrentConditions(page, dc as unknown as IVCWeatherResponse, 'Washington, DC');
-    await checkAllSevenDayListItems(page, dc.location.values as unknown as IVCWeatherDayValueSet[])
+    await checkCurrentConditions(page, dc, 'Washington, DC');
+    await checkAllSevenDayListItems(page, dc.location.values)
 
     await page.locator('#saved-location-los-angeles-ca').click({ force: true });
     await checkCurrentConditions(page, la as unknown as IVCWeatherResponse, 'Los Angeles, CA');
-    await checkAllSevenDayListItems(page, la.location.values as unknown as IVCWeatherDayValueSet[])
+    await checkAllSevenDayListItems(page, la.location.values)
   });
 });
