@@ -60,8 +60,8 @@ SuperRetroWeather uses [TypeScript](https://www.typescriptlang.org/).  This is n
 ## REDIS
 SuperRetroWeather uses a REDIS cache to cache responses from the VisualCrossing API.  We use an Astro API route to check the REDIS cache with the ioredis library for a previously cached response (responses are cached for one hour), and gets a live API response and caches it for an hour if not cached.  SuperRetroWeather is set up to use local REDIS in development; you must have REDIS installed on your development machine.  SuperRetroWeather uses the ioredis package as a REDIS client on the frontend.
 
-## Nanostores
-SuperRetroWeather uses the [Nano Stores](https://github.com/nanostores/nanostores) package to manage state globally across the app.
+## Jotai
+SuperRetroWeather uses [Jotai](https://jotai.org) package to manage state globally across the app.
 
 ## Tailwind
 SuperRetroWeather uses [Tailwind](https://tailwindcss.com/) for styling and CSS.
@@ -101,7 +101,7 @@ npm run test
 This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
 
 ### Removing Tailwind CSS
-
+# DO NOT REMOVE TAILWIND CSS FROM THIS PROJECT
 If you prefer not to use Tailwind CSS:
 
 1. Remove the demo pages in `src/routes/demo/`
