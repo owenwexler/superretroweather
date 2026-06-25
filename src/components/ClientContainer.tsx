@@ -1,12 +1,11 @@
+import { useAtom } from 'jotai';
 import NoWeatherData from './NoWeatherData';
 
-import { useStore } from '@nanostores/preact';
-import { $currentLocation } from '../store/weatherStore';
-
 import WeatherContainer from './WeatherComponents/WeatherContainer';
+import { currentLocationAtom } from '#/store/weatherStore';
 
 const ClientContainer: React.FC = () => {
-  const currentLocation = useStore($currentLocation);
+  const [currentLocation, setCurrentLocation] = useAtom(currentLocationAtom);
 
   return (
     <div className="flex flex-col align-center-items-center text-center space-y-3">
@@ -21,4 +20,4 @@ const ClientContainer: React.FC = () => {
   )
 }
 
-export default ClientContainer
+export default ClientContainer;

@@ -1,4 +1,4 @@
-import type { FC } from 'preact/compat';
+import type { FC } from 'react';
 
 const ClientNavbarSeparator: FC = () => {
   return (
@@ -6,4 +6,4 @@ const ClientNavbarSeparator: FC = () => {
   )
 }
 
-export default ClientNavbarSeparator
+export default ClientNavbarSeparator;

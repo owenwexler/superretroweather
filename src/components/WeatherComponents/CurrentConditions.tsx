@@ -1,4 +1,4 @@
-import type { FC } from 'preact/compat';
+import type { FC } from 'react';
 import { formatDateMMDDYY } from '../../helper/formatDateMMDDYY';
 import { formatTime } from '../../helper/formatTime';
 import type { ICurrentConditions } from '../../typedefs/ICurrentConditions'

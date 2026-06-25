@@ -1,10 +1,10 @@
-import { $savedLocations } from '../store/weatherStore';
-import { useStore } from '@nanostores/preact';
+import { useAtom } from 'jotai';
+import { savedLocationsAtom } from '../store/weatherStore';
 import ClientSpacer from './ClientSpacer';
-import type { FC } from 'preact/compat';
+import type { FC } from 'react';
 
 const MobileResponsiveSpacerGroup: FC = () => {
-  const savedLocations = useStore($savedLocations);
+  const [savedLocations, setSavedLocations] = useAtom(savedLocationsAtom);
 
   return (
     <>

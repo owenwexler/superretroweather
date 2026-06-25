@@ -1,33 +1,68 @@
 {
-  "name": "SuperRetroWeather",
+  "name": "srw-tanstack",
+  "private": true,
   "type": "module",
-  "version": "1.0.1",
+  "imports": {
+    "#/*": "./src/*"
+  },
   "scripts": {
-    "dev": "astro dev",
-    "dev:offline": "DEV_MODE=\"offline\" npm run dev",
-    "start": "node ./dist/server/entry.mjs",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro",
+    "dev": "vite dev --port 3000",
+    "generate-routes": "tsr generate",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "lint": "eslint",
+    "format": "prettier --write . && eslint --fix",
+    "check": "prettier --check .",
     "test:e2e:run": "npx playwright test",
     "test:e2e:ui": "npx playwright test --ui",
-    "test:report": "npx playwright show-report"
+    "test:report": "npx playwright show-report",
+    "test:codegen": "npx playwright codegen http://localhost:3000"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/node": "^9.0.2",
-    "@astrojs/preact": "^4.0.3",
-    "@astrojs/tailwind": "^5.1.5",
-    "@nanostores/preact": "^0.5.1",
-    "@playwright/test": "^1.49.1",
-    "astro": "^5.16.3",
-    "ioredis": "^5.4.1",
-    "nanostores": "^0.10.3",
-    "preact": "^10.23.1",
-    "tailwindcss": "^3.4.6",
-    "typescript": "^5.5.4"
+    "@playwright/test": "^1.61.1",
+    "@t3-oss/env-core": "^0.13.10",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/eslint-plugin-query": "^5.101.1",
+    "@tanstack/react-devtools": "latest",
+    "@tanstack/react-query": "^5.101.1",
+    "@tanstack/react-query-devtools": "^5.101.1",
+    "@tanstack/react-router": "latest",
+    "@tanstack/react-router-devtools": "latest",
+    "@tanstack/react-router-ssr-query": "latest",
+    "@tanstack/react-start": "latest",
+    "@tanstack/router-plugin": "^1.132.0",
+    "ioredis": "^5.11.1",
+    "jotai": "^2.20.1",
+    "lucide-react": "^0.545.0",
+    "nitro": "npm:nitro-nightly@latest",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.18",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@types/node": "^22.5.5"
+    "@tailwindcss/typography": "^0.5.16",
+    "@tanstack/devtools-vite": "latest",
+    "@tanstack/eslint-config": "latest",
+    "@tanstack/router-cli": "^1.132.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.20.0",
+    "jsdom": "^28.1.0",
+    "prettier": "^3.8.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lightningcss"
+    ]
   }
 }
