@@ -1,6 +1,6 @@
 import Redis from 'ioredis';
 
-const redisConnection = import.meta.env.REDIS_CONNECTION;
+const redisConnection = process.env.REDIS_CONNECTION;
 
 const redis = redisConnection && redisConnection !== '' ? new Redis(redisConnection) : new Redis();
 
