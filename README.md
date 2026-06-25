@@ -2,29 +2,24 @@
 ## An open-source 8-bit weather app by Owen Wexler
 SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro experience that takes you right back to the good old days of the Nintendo Entertainment System. Just type your location into the search box and you can get a variety of weather data for your city in a fun nostalgic 8-bit package. As an added bonus, the app also remembers the last five locations you visited!
 
-## Tech Stack
-We are in the middle of migrating the entire app from Astro and Preact to Tanstack Start.
-
-### Target stack:
-Language: TypeScript
-Runtime: Node
-Framework: Tanstack Start (was Astro/Preact)
-CSS Library: Tailwind
-UI Library: none, all buttons and inputs are custom 
-Database: localStorage for persisting saved locations, otherwise none
-ORM: none
-Cache: REDIS for caching weather API responses
-Weather API: VisualCrossing Weather API
-Custom font: Press Start 2P (from Google Fonts, self-hosted)
-Error-handling library: none
-Logging: none
-Environment Variable Validation: none
-Linting: ESLint
-Client state management: Jotai (was Nanostores)
-CI: none
-Deployment target: Render.com
-
-Currently, the project is a Tanstack Start scaffold with all the target stack dependencies in place and the components from the old Astro/Preact codebase. 
+## Current Tech Stack
+* Language: [TypeScript](https://typescriptlang.org)
+* Runtime: [Node](https://nodejs.org/en)
+* Framework: [Tanstack Start](https://tanstack.com/start/latest) 
+* CSS Library: [Tailwind](https://tailwindcss.com/)
+* UI Library: none, all buttons and inputs are custom 
+* Database: localStorage for persisting saved locations, otherwise none
+* ORM: none
+* Cache: [REDIS](https://redis.io/) for caching weather API responses
+* Weather API: [VisualCrossing Weather API](https://www.visualcrossing.com/weather-api/)
+* Custom font: [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) (from Google Fonts, self-hosted)
+* Error-handling library: none
+* Logging: none
+* Environment Variable Validation: [T3-Env](http://env.t3.gg/)
+* Linting: ESLint(http://eslint.org)
+* Client state management: [Jotai](https://jotai.org/)
+* CI: none
+* Deployment target: [Render.com](https://render.com)
 
 ## Setup 
 1.  Make sure you have [Node](https://nodejs.org/) and [REDIS](https://redis.io/lp/get-started2) installed locally.  In some Linux distributions, REDIS is replaced by Valkey under the hood - this shouldn't cause any problems in development.  Please submit an issue if it does.
@@ -59,12 +54,6 @@ SuperRetroWeather uses [TypeScript](https://www.typescriptlang.org/).  This is n
 
 ## REDIS
 SuperRetroWeather uses a REDIS cache to cache responses from the VisualCrossing API.  We use an Astro API route to check the REDIS cache with the ioredis library for a previously cached response (responses are cached for one hour), and gets a live API response and caches it for an hour if not cached.  SuperRetroWeather is set up to use local REDIS in development; you must have REDIS installed on your development machine.  SuperRetroWeather uses the ioredis package as a REDIS client on the frontend.
-
-## Jotai
-SuperRetroWeather uses [Jotai](https://jotai.org) package to manage state globally across the app.
-
-## Tailwind
-SuperRetroWeather uses [Tailwind](https://tailwindcss.com/) for styling and CSS.
 
 ## Tanstack Start
 As of June 2026, SuperRetroWeather uses Tanstack Start as its framework.  From July 2024-June 2026, SuperRetroWeather used Astro and Preact, but has now migrated to Tanstack Start.  All evergreen Tanstack Start details are included below.
