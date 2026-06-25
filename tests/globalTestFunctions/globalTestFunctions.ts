@@ -76,6 +76,13 @@ const searchFor = async(page: Page, searchQuery: string) => {
   await searchButton.click({ force: true });
 }
 
+const searchForWithKeyboard = async(page: Page, searchQuery: string) => {
+  const searchInput = page.locator('#srw-search-input');
+
+  await searchInput.fill(searchQuery);
+  await expect(searchInput).toHaveValue(searchQuery);
+  await searchInput.press('Enter');
+}
 export {
   setMobileViewport,
   setTabletViewport,
@@ -84,5 +91,6 @@ export {
   testNavbarExistence,
   checkUrl,
   checkDefaultMessage,
-  searchFor
+  searchFor,
+  searchForWithKeyboard
 }
