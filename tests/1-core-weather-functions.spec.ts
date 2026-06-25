@@ -1,5 +1,5 @@
 import test, { expect } from "@playwright/test";
-import { checkDefaultMessage, searchFor, setTabletViewport } from "./globalTestFunctions/globalTestFunctions";
+import { checkDefaultMessage, searchFor, searchForWithKeyboard, setTabletViewport } from "./globalTestFunctions/globalTestFunctions";
 
 import { checkAllSevenDayListItems, checkCurrentConditions } from "./globalTestFunctions/weatherTestFunctions";
 import type { IVCWeatherResponse } from "../src/typedefs/IVCWeatherResponse";
@@ -46,5 +46,12 @@ test.describe('Core weather functions, mobile viewport', () => {
     await page.locator('#saved-location-los-angeles-ca').click({ force: true });
     await checkCurrentConditions(page, la as unknown as IVCWeatherResponse, 'Los Angeles, CA');
     await checkAllSevenDayListItems(page, la.location.values)
+
+    await searchForWithKeyboard(page, 'Washington, DC');
+    await expect(page.locator('#saved-location-washington-dc')).toBeVisible();
+
+    await checkDefaultMessage(page, { exists: false });
+    await checkCurrentConditions(page, dc, 'Washington, DC');
+    await checkAllSevenDayListItems(page, dc.location.values);
   });
 });

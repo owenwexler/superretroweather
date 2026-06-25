@@ -8,7 +8,9 @@ export const env = createEnv({
     DEV_MODE: z.enum(['offline', 'online']),
     VC_API_KEY: z.string(),
     REDIS_CONNECTION: z.string(),
-    SRW_ENV: z.enum(['development', 'production'])
+    SRW_ENV: z.enum(['development', 'production']),
+    NODE_VERSION: z.string(),
+    NITRO_PRESET: z.enum(['render_com', 'digitalocean', 'cloudflare', 'bun', 'netlify', 'vercel', 'node-server'])
   },
 
   /**
@@ -30,6 +32,8 @@ export const env = createEnv({
     VC_API_KEY: process.env.VC_API_KEY,
     REDIS_CONNECTION: process.env.REDIS_CONNECTION,
     SRW_ENV: process.env.SRW_ENV,
+    NODE_VERSION: process.env.NODE_VERSION, 
+    NITRO_PRESET: process.env.NITRO_PRESET
   },
 
   /**
