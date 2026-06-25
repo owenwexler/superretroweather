@@ -6,6 +6,7 @@ import SevenDayList from './SevenDayList';
 
 import { useQuery } from '@tanstack/react-query';
 import { getWeatherData } from '#/server/server';
+import type { IVCWeatherResponse } from '#/typedefs/IVCWeatherResponse';
 
 interface WeatherContainerProps {
   location: string;
@@ -29,20 +30,17 @@ const WeatherContainer: React.FC<WeatherContainerProps> = ({ location }) => {
     return <Error />
   }
 
-  if (!data || 'error' in data) {
-    console.error(error);
-    return <Error />
-  }
+  const weather = data! as IVCWeatherResponse;
 
   return (
     <>
-      <WeatherHeader name={data.location.name} />
+      <WeatherHeader name={weather.location.name} />
 
-      <CurrentConditions conditions={data.location.currentConditions} />
+      <CurrentConditions conditions={weather.location.currentConditions} />
 
       <SevenDayList
-        sevenDayList={data.location.values}
-        location={data.location.name}
+        sevenDayList={weather.location.values}
+        location={weather.location.name}
       />
     </>
   )

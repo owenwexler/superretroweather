@@ -45,7 +45,7 @@ export const getWeatherData = createServerFn({ method: 'GET' })
       const cacheResponse = await redis.get(cacheKey);
 
       if (cacheResponse) {
-        return cacheResponse as unknown as IVCWeatherResponse;
+        return JSON.parse(cacheResponse) as IVCWeatherResponse;
       } else {
         const weatherResponse = await getVCWeatherData(location, {
           viteEnv,
