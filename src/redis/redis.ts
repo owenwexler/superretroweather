@@ -6,6 +6,6 @@ const redis = redisConnection && redisConnection !== '' ? new Redis(redisConnect
 
 redis.on('connect', () => {
   console.log('REDIS connection successful.')
-})
+});
 
 export default redis;
