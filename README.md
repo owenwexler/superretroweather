@@ -56,7 +56,7 @@ SuperRetroWeather uses [TypeScript](https://www.typescriptlang.org/).  This is n
 SuperRetroWeather uses a REDIS cache to cache responses from the VisualCrossing API.  We use an Astro API route to check the REDIS cache with the ioredis library for a previously cached response (responses are cached for one hour), and gets a live API response and caches it for an hour if not cached.  SuperRetroWeather is set up to use local REDIS in development; you must have REDIS installed on your development machine.  SuperRetroWeather uses the ioredis package as a REDIS client on the frontend.
 
 ## Tanstack Start
-As of June 2026, SuperRetroWeather uses Tanstack Start as its framework.  From July 2024-June 2026, SuperRetroWeather used Astro and Preact, but has now migrated to Tanstack Start.  All evergreen Tanstack Start details are included below.
+As of June 2026, SuperRetroWeather uses Tanstack Start as its framework.  From July 2024-June 2026, SuperRetroWeather used Astro and Preact, but has now migrated fully to Tanstack Start.  All evergreen Tanstack Start details are included below.
 
 Welcome to your new TanStack Start app! 
 
