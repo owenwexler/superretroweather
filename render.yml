@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: superretroweather
+    runtime: docker # <-- Change from 'node' to 'docker'
+    branch: production # use the production branch for deployments
+    # Remove 'buildCommand' and 'startCommand' lines if they are present, 
+    # as Docker handle these inside the image.

@@ -4,7 +4,7 @@ SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro ex
 
 ## Current Tech Stack
 * Language: [TypeScript](https://typescriptlang.org)
-* Runtime: [Node](https://nodejs.org/en)
+* Runtime: [Bun](https://bun.sh)
 * Framework: [Tanstack Start](https://tanstack.com/start/latest) 
 * CSS Library: [Tailwind](https://tailwindcss.com/)
 * UI Library: none, all buttons and inputs are custom 
@@ -22,7 +22,7 @@ SuperRetroWeather is an open-source weather app with a twist - an 8-bit retro ex
 * Deployment target: [Render.com](https://render.com)
 
 ## Setup 
-1.  Make sure you have [Node](https://nodejs.org/) and [REDIS](https://redis.io/lp/get-started2) installed locally.  In some Linux distributions, REDIS is replaced by Valkey under the hood - this shouldn't cause any problems in development.  Please submit an issue if it does.
+1.  Make sure you have [Bun](https://bun.sh/) and [REDIS](https://redis.io/lp/get-started2) installed locally.  In some Linux distributions, REDIS is replaced by Valkey under the hood - this shouldn't cause any problems in development.  Please submit an issue if it does.
 2.  Sign up for a VisualCrossing account and get an API key (instructions for doing so below)
 3.  Create a ```.env``` file and set up all environment variables according to the ```.env.example``` file.  Fill in the API key you got from VisualCrossing in VC_API_KEY.  Leave the REDIS_CONNECTION variable blank ('') for local REDIS in development.  SRW_ENV is necessary to determine whether the environment is development or production in client components.  Set DEV_MODE to "offline" before running the tests.   
 4.  Install all dependencies by typing ```npm install```.  
@@ -36,7 +36,6 @@ SuperRetroWeather uses the [Press Start 2P](https://fonts.google.com/specimen/Pr
 As of September 2024, the current 8-bit weather images are from [Freepik.com](https://www.freepik.com).  The license is a premium commercial license that allows for any use including commercial use and derivative works.  We swapped out the images so we could include them in the repo, which is necessary for them to be hosted on the same server as the app.
 
 ## Accessing the VisualCrossing Weather API
-
 - SuperRetroWeather uses [VisualCrossing's Weather Data Services](https://www.visualcrossing.com/weather/weather-data-services#/login) to retrieve all weather data.
 - To get SuperRetroWeather working on your machine, you will have to sign up for a VisualCrossing account at the above site and get an API key.  Your API key can be found by clicking the _Account_ tab in the upper right hand corner, and is called your _Account Key_.
 
@@ -54,6 +53,9 @@ SuperRetroWeather uses [TypeScript](https://www.typescriptlang.org/).  This is n
 
 ## REDIS
 SuperRetroWeather uses a REDIS cache to cache responses from the VisualCrossing API.  We use an Astro API route to check the REDIS cache with the ioredis library for a previously cached response (responses are cached for one hour), and gets a live API response and caches it for an hour if not cached.  SuperRetroWeather is set up to use local REDIS in development; you must have REDIS installed on your development machine.  SuperRetroWeather uses the ioredis package as a REDIS client on the frontend.
+
+## Bun
+As of July 2026, Bun replaces Node as the runtime.
 
 ## Tanstack Start
 As of June 2026, SuperRetroWeather uses Tanstack Start as its framework.  From July 2024-June 2026, SuperRetroWeather used Astro and Preact, but has now migrated fully to Tanstack Start.  All evergreen Tanstack Start details are included below.

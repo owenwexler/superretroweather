@@ -1,11 +1,14 @@
-import Redis from 'ioredis';
+import { env } from '#/env';
 
-const redisConnection = process.env.REDIS_CONNECTION;
+function getRedisClient() {
+  // Access the global Bun runtime safely
+  if (typeof Bun !== 'undefined') {
+    return new Bun.RedisClient(env.REDIS_URL);
+  }
+  
+  throw new Error("Redis client can only be initialized on a Bun server environment.");
+}
 
-const redis = redisConnection && redisConnection !== '' ? new Redis(redisConnection) : new Redis();
+const client = getRedisClient();
 
-redis.on('connect', () => {
-  console.log('REDIS connection successful.')
-});
-
-export default redis;
+export default client;
