@@ -45,23 +45,24 @@ export const getWeatherData = createServerFn({ method: 'GET' })
       const cacheResponse = await redis.get(cacheKey);
 
       if (cacheResponse) {
+        console.log(`CACHE HIT: ${cacheKey}`);
         return JSON.parse(cacheResponse) as IVCWeatherResponse;
-      } else {
-        const weatherResponse = await getVCWeatherData(location, {
-          viteEnv,
-          devMode,
-          apiKey: env.VC_API_KEY
-        });
-
-        const stringifiedWeatherResponse = JSON.stringify(weatherResponse);
-
-        redis.set(cacheKey, stringifiedWeatherResponse, 'EX', 60 * 60);
-
-        return weatherResponse;
       }
     } catch (error) {
       console.error(error);
-      const responseObj = { error: String(error) }
-      return responseObj;
     }
+
+    console.log(`CACHE MISS OR ERROR: ${cacheKey}`);
+
+    const weatherResponse = await getVCWeatherData(location, {
+      viteEnv,
+      devMode,
+      apiKey: env.VC_API_KEY
+    });
+
+    const stringifiedWeatherResponse = JSON.stringify(weatherResponse);
+
+    redis.set(cacheKey, stringifiedWeatherResponse, 'EX', 60 * 60);
+
+    return weatherResponse;
   });
