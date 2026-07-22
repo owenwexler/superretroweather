@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider } from 'jotai';
-import { Home } from '../../src/routes/index';
+import HomePage from '#/components/HomePage';
 
 // A fresh jotai Provider and QueryClient per render keep atom state and
 // query cache isolated between tests - without the Provider, jotai falls
@@ -19,7 +19,7 @@ const renderHome = () => {
   return render(
     <Provider>
       <QueryClientProvider client={queryClient}>
-        <Home />
+        <HomePage />
       </QueryClientProvider>
     </Provider>
   );
