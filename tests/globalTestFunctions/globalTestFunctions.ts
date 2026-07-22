@@ -67,21 +67,38 @@ const checkDefaultMessage = async (page: Page,  args: { exists: boolean }) => {
   }
 }
 
+const locationToId = (location: string) =>
+  location.split(' ').join('-').replace(',', '').toLowerCase();
+
+// Right after page load, React may not have finished hydrating yet: the search
+// input is controlled, so filling it before hydration gets silently discarded
+// the moment React's first post-hydration render syncs the DOM back to its
+// (still empty) internal state. A click that follows then no-ops, since the
+// component's local `value` state was never actually updated. We can't tell
+// this apart from a real submission just by reading the input's value back
+// (both end up ''), so retry fill+click as a unit until the saved-location
+// button we're expecting actually shows up.
 const searchFor = async(page: Page, searchQuery: string) => {
   const searchInput = page.locator('#srw-search-input');
   const searchButton = page.locator('#srw-search-button');
+  const savedLocationButton = page.locator(`#saved-location-${locationToId(searchQuery)}`);
 
-  await searchInput.fill(searchQuery);
-  await expect(searchInput).toHaveValue(searchQuery);
-  await searchButton.click({ force: true });
+  await expect(async () => {
+    await searchInput.fill(searchQuery);
+    await searchButton.click({ force: true });
+    await expect(savedLocationButton).toBeVisible({ timeout: 1000 });
+  }).toPass();
 }
 
 const searchForWithKeyboard = async(page: Page, searchQuery: string) => {
   const searchInput = page.locator('#srw-search-input');
+  const savedLocationButton = page.locator(`#saved-location-${locationToId(searchQuery)}`);
 
-  await searchInput.fill(searchQuery);
-  await expect(searchInput).toHaveValue(searchQuery);
-  await searchInput.press('Enter');
+  await expect(async () => {
+    await searchInput.fill(searchQuery);
+    await searchInput.press('Enter');
+    await expect(savedLocationButton).toBeVisible({ timeout: 1000 });
+  }).toPass();
 }
 export {
   setMobileViewport,

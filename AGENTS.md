@@ -38,7 +38,7 @@ Components: PascalCase - rename ShadCN component primitives to match this conven
 All other .tsx files: camelCase
 
 # PACKAGE MANAGEMENT
-Use npm for all package management in development and production.
+Use Bun for all package management in development and production.
 
 # CODE STYLE
 ## If it is necessary ay any time to not conform to these code style guidelines, document any reasons for doing so via code comments as a rule.
@@ -201,7 +201,7 @@ Use of an error logging and analytics service such as PostHog is reommended in a
 4. Trust no user input.  Always validate user input on the frontend and backend.
 
 # TESTS
-1.  At this time, Playwright is used as the testing framework for most projects.
+1.  Playwright (tests/) is reserved for behavior that genuinely requires a real browser: localStorage/session persistence, and rendering/layout that depends on actual CSS (e.g. responsive/media-query-driven visibility). bun:test + React Testing Library (tests/rtl/) is used for everything else — component rendering and behavior that doesn't depend on real browser APIs or CSS layout.
 2.  The rule is to test behavior.  100% code coverage is not a concern.  Testing that all app use flows and behaviors happen as expected is better.
 4.  Test-driven development is preferred for new features or greenfield project design.  Write the tests first, then write logic and UI that makes the tests pass.
 5.  All code conventions outlined in this document should be followed in tests unless there is a documented reason to do otherwise.

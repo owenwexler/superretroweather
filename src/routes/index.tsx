@@ -11,7 +11,7 @@ import { env } from '#/env';
 
 export const Route = createFileRoute('/')({ component: Home })
 
-function Home() {
+export function Home() {
   return (
     <>
       <Navbar>
