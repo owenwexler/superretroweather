@@ -19,7 +19,6 @@
     "test:report": "bunx playwright show-report",
     "test:codegen": "bunx playwright codegen http://localhost:3000",
     "test": "bun test tests/rtl",
-    "postinstall": "bun pm trusted"
   },
   "dependencies": {
     "@playwright/test": "^1.62.1",
