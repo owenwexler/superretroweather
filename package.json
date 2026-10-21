@@ -18,7 +18,7 @@
     "test:e2e:ui": "bunx playwright test --ui",
     "test:report": "bunx playwright show-report",
     "test:codegen": "bunx playwright codegen http://localhost:3000",
-    "test": "bun test tests/rtl",
+    "test": "bun test tests/rtl"
   },
   "dependencies": {
     "@playwright/test": "^1.62.1",
