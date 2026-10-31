@@ -44,9 +44,9 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "@vitejs/plugin-react": "^6.1.0",
-    "@happy-dom/global-registrator": "^20.11.12",
+    "@happy-dom/global-registrator": "^21.0.4",
     "@testing-library/jest-dom": "^7.0.1",
-    "happy-dom": "^20.11.12",
+    "happy-dom": "^21.0.4",
     "eslint": "^10.9.1",
     "jotai": "^2.20.3",
     "jsdom": "^30.0.1",
@@ -65,5 +65,10 @@
       "esbuild",
       "lightningcss"
     ]
+  },
+  "overrides": {
+    "minimatch": ">=11.0.3",
+    "postcss-selector-parser": "^6.1.5",
+    "srvx": "^1.0.8"
   }
 }
