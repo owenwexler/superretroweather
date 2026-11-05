@@ -9,7 +9,7 @@ import { currentLocationAtom, savedLocationsAtom } from "#/store/weatherStore";
 
 const SavedLocations: React.FC = () => {
   const [savedLocations, setSavedLocations] = useAtom(savedLocationsAtom);
-  const [currentLocation, setCurrentLocation] = useAtom(currentLocationAtom);
+  const [, setCurrentLocation] = useAtom(currentLocationAtom);
 
   const handleLocationLinkClick = (location: string) => {
     setCurrentLocation(location);

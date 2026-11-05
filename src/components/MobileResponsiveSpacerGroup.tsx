@@ -4,7 +4,7 @@ import ClientSpacer from './ClientSpacer';
 import type { FC } from 'react';
 
 const MobileResponsiveSpacerGroup: FC = () => {
-  const [savedLocations, setSavedLocations] = useAtom(savedLocationsAtom);
+  const [savedLocations] = useAtom(savedLocationsAtom);
 
   return (
     <>

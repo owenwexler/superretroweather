@@ -1,12 +1,7 @@
 import type { Page } from "playwright/test";
 
 import { expect } from '@playwright/test';
-import type { IVCWeatherResponse } from "../../src/typedefs/IVCWeatherResponse";
 
-const testLinkById = async (page: Page, id: string, href: string) => {
-  await expect(page.locator(id)).toBeVisible();
-  await expect(page.locator(id)).toHaveAttribute('href', href);
-}
 
 const setMobileViewport = async (page: Page) => {
   await page.setViewportSize({ width: 390, height: 844 });

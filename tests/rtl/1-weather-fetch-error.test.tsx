@@ -1,15 +1,28 @@
 import { afterEach, describe, expect, test } from 'bun:test';
 import { fireEvent, screen } from '@testing-library/react';
 import { renderHome } from './renderHome';
-import { getWeatherDataMock } from './mockServerFunctions';
+import { weatherApiMock } from './mockWeatherApi';
 
 describe('Weather fetch error', () => {
   afterEach(() => {
-    getWeatherDataMock.mockReset();
+    weatherApiMock.mockClear();
   });
 
-  test('searching a location shows the error message when the weather API call fails', async () => {
-    getWeatherDataMock.mockImplementationOnce(() => Promise.reject(new Error('mock API failure')));
+  test('searching a location shows the error message when the weather API route fails', async () => {
+    weatherApiMock.mockImplementationOnce(async () =>
+      Response.json(
+        {
+          data: null,
+          error: {
+            code: 'mock_api_failure',
+            message: 'mock API failure',
+            details: 'The weather route failed',
+            hint: 'Check the server logs'
+          }
+        },
+        { status: 500 }
+      )
+    );
 
     renderHome();
 

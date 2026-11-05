@@ -5,7 +5,7 @@ import WeatherContainer from './WeatherComponents/WeatherContainer';
 import { currentLocationAtom } from '#/store/weatherStore';
 
 const ClientContainer: React.FC = () => {
-  const [currentLocation, setCurrentLocation] = useAtom(currentLocationAtom);
+  const [currentLocation] = useAtom(currentLocationAtom);
 
   return (
     <div className="flex flex-col align-center-items-center text-center space-y-3">

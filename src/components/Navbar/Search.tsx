@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 
 const Search: React.FC = () => {
-  const [currentLocation, setCurrentLocation] = useAtom(currentLocationAtom);
+  const [, setCurrentLocation] = useAtom(currentLocationAtom);
   const [savedLocations, setSavedLocations] = useAtom(savedLocationsAtom);
 
   const [value, setValue] = useState('');

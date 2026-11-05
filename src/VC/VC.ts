@@ -32,7 +32,7 @@ const getVCWeatherData = async (location: string, args: IGetVCWeatherDataAdditio
     return data;
   } catch (error) {
     console.error(error);
-    throw new Error(error as string);
+    throw error;
   }
 }
 

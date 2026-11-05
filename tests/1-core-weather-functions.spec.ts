@@ -4,7 +4,6 @@ import { checkDefaultMessage, searchFor, searchForWithKeyboard, setTabletViewpor
 import { checkAllSevenDayListItems, checkCurrentConditions } from "./globalTestFunctions/weatherTestFunctions";
 import type { IVCWeatherResponse } from "../src/typedefs/IVCWeatherResponse";
 
-import type { IVCWeatherDayValueSet } from "../src/typedefs/IVCWeatherDayValueSet";
 import { dc } from "#/offlineWeatherData/VCMockData/dc";
 import { la } from "#/offlineWeatherData/VCMockData/la";
 

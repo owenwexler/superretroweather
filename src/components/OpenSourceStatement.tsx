@@ -1,4 +1,3 @@
-import React from 'react';
 import { clickableText } from './style/twClasses/clickableTextClasses';
 
 const OpenSourceStatement = () => {

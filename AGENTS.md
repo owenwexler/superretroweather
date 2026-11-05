@@ -154,8 +154,8 @@ Jotai for app-level state (color modes/modals on and off, etc.)
 6. As a security rule, never reveal whether it is a user's email or password that is incorrect when an invalid credentials error (errors.invalidCredentials in the dataerror library) is returned.  Always use a generic "Incorrect e-mail or password" message.
 
 # API ENDPOINT CONVENTIONS
-- Server actions (NextJS) or server functions (TanStack Start) are preferred over API endpoints for almost all functions.
-- Server actions/functions should be secured with CORS policies or auth checks if applicable.  Calling a server action separately via Postman or some other HTTP client should never be possible.
+- Server functions should mostly be used in place of API endpoints 
+- Since the ```/weather``` endpoint is accessed by both the web app and the mobile app, that endpoint is an exception to this rule.
 - If an API endpoint is needed, use the following conventions: ```/auth``` for anything involving auth, ```/admin``` for any seed route, test route, test cleanup route, or anything involving multiple file deletions, secured with a special admin key, and ```/todos``` for any routes needed related to Todos that can not be a server action or function, or if we are using a HTMX/Alpine based stack that has no server functions or actions.
 
 # FORMS

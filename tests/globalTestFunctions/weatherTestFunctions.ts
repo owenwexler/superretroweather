@@ -19,25 +19,15 @@ const checkCurrentConditions = async (page: Page, weatherObject: IVCWeatherRespo
   const currentConditions = weatherObject.location.currentConditions;
 
   const {
-    wdir,
     temp,
     sunrise,
-    visibility,
     wspd,
-    icon,
-    stations,
-    heatindex,
     cloudcover,
     datetime,
     precip,
-    moonphase,
-    snowdepth,
-    sealevelpressure,
-    dew,
     sunset,
     humidity,
     wgust,
-    windchill
   } = currentConditions;
 
   const dateLoc = page.locator('#current-conditions-date');
@@ -99,11 +89,7 @@ const checkSevenDayListItem = async (page: Page, sevenDayListItem: IVCWeatherDay
     wspd,
     datetimeStr,
     cloudcover,
-    heatindex,
     mint,
-    precip,
-    snowdepth,
-    snow,
     humidity,
     wgust,
     conditions,
