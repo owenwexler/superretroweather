@@ -1,5 +1,6 @@
 import Loading from '../Loading';
 import Error from '../Error';
+import NotFound from '../NotFound';
 import CurrentConditions from './CurrentConditions';
 import WeatherHeader from './WeatherHeader';
 import SevenDayList from './SevenDayList';
@@ -18,6 +19,15 @@ interface WeatherContainerProps {
 
 // Unwraps the /api/weather body ({ data, error }) so components get the weather data directly.
 // Failures are thrown, not returned, because React Query only sets isError when queryFn throws.
+const isLocationNotFound = (value: unknown): boolean => {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'code' in value &&
+    value.code === 'location_not_found'
+  );
+}
+
 const fetchWeather = async (location: string): Promise<IVCWeatherResponse> => {
   const response = await snaxios.get<DataErrorReturnObject<IVCWeatherResponse>>(
     encodeURI(`/api/weather?location=${location}`)
@@ -31,6 +41,16 @@ const fetchWeather = async (location: string): Promise<IVCWeatherResponse> => {
 
   if (!body || body.error || !body.data) {
     throw body?.error ?? errors.unknownError;
+  }
+
+  // Some responses come back with HTTP 200 but no weather, for example an unknown location in offline mode.  Treat them as errors so the error state is shown.
+  if (body.data.error) {
+    throw {
+      ...errors.unknownError,
+      code: 'location_not_found',
+      message: 'Location not found',
+      details: body.data.error
+    };
   }
 
   return body.data;
@@ -50,6 +70,11 @@ const WeatherContainer: React.FC<WeatherContainerProps> = ({ location }) => {
 
   if (isError || !data) {
     console.error(error);
+
+    if (isLocationNotFound(error)) {
+      return <NotFound />
+    }
+
     return <Error />
   }
 

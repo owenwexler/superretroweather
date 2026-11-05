@@ -30,7 +30,15 @@ const getOfflineWeatherData = async (text: string): Promise<IVCWeatherResponse> 
   lookup['Toronto, Canada'] = { ...toronto };
   lookup['Virginia Beach, VA'] = { ...vb };
 
-  const result: IVCWeatherResponse = lookup[text as keyof typeof lookup].location.address !== '' ? lookup[text as keyof typeof lookup] : { ...blankVCResponse, error: 'not found' } ;
+  // Unknown locations are not in the lookup table, so check for a match before reading its address.  Otherwise the not-found response is returned instead of throwing.
+  const match = lookup[text as keyof typeof lookup];
+
+  const result: IVCWeatherResponse =
+    match?.location.address
+    ?
+      match
+    :
+      { ...blankVCResponse, error: 'not found' };
 
   return result;
 }

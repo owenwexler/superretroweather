@@ -1,2 +1,1 @@
-[test]
-preload = ["./tests/rtl/registerDom.ts", "./tests/rtl/happydom.ts", "./tests/rtl/mockWeatherApi.ts"]
+# Test preloads live in the "test" script in package.json, so the RTL suite (which mocks fetch) and the API suite (which makes real HTTP requests) each load only what they need.

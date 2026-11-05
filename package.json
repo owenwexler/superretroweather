@@ -18,7 +18,9 @@
     "test:e2e:ui": "bunx playwright test --ui",
     "test:report": "bunx playwright show-report",
     "test:codegen": "bunx playwright codegen http://localhost:3000",
-    "test": "bun test tests/rtl"
+    "test": "bun run test:integration && bun run test:api",
+    "test:integration": "bun test --preload ./tests/rtl/registerDom.ts --preload ./tests/rtl/happydom.ts --preload ./tests/rtl/mockWeatherApi.ts tests/rtl",
+    "test:api": "bun test tests/api"
   },
   "dependencies": {
     "@happy-dom/global-registrator": "^21.0.4",

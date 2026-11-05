@@ -25,7 +25,7 @@ const getVCWeatherData = async (location: string, args: IGetVCWeatherDataAdditio
       return offlineWeatherData;
     }
 
-    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&combinationMethod=aggregate&contentType=json&unitGroup=us&locationMode=single&key=${apiKey}&dataElements=default&locations=${location}`);
+    const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?aggregateHours=24&combinationMethod=aggregate&contentType=json&unitGroup=us&locationMode=single&key=${apiKey}&dataElements=default&locations=${encodeURIComponent(location)}`);
 
     const data = response.json() as unknown as IVCWeatherResponse;
 

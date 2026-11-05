@@ -3,51 +3,70 @@ import { env } from "#/env";
 import redis from "#/redis/redis";
 import type { IVCWeatherResponse } from "#/typedefs/IVCWeatherResponse";
 import { getVCWeatherData } from "#/VC/VC";
-import z from "zod";
-import { success, failure, errors } from 'dataerror';
+import { locationSchema } from "#/schemas/locationSchema";
+import { checkRateLimit, getClientIp } from "#/server/rateLimit";
+import { success, failure } from 'dataerror';
+import type { ErrorType } from 'dataerror';
 
-const searchSchema = z.object({
-  location: z.string().min(1)
-});
+// 30 weather requests per IP address per minute
+const RATE_LIMIT_OPTIONS = {
+  limit: 30,
+  windowSeconds: 60
+};
+
+const rateLimitedError: ErrorType = {
+  code: 'rate_limited',
+  message: 'Too many requests',
+  details: 'Too many weather requests were sent from this IP address',
+  hint: 'Wait a minute and try again'
+};
 
 export const Route = createFileRoute('/api/weather')({
-  validateSearch: searchSchema,
   server: {
     handlers: {
       GET: async ({ request }) => {
-        const url = new URL(request.url);
-        const parsed = searchSchema.safeParse({
-          location: url.searchParams.get('location') ?? ''
-        });
+        const ip = getClientIp(request);
+        const rateLimit = await checkRateLimit(ip, RATE_LIMIT_OPTIONS);
 
-        if (!parsed.success) {
-          console.error('Missing location');
-          const result = await failure<IVCWeatherResponse>(errors.missingInputs, 'api/weather GET');
-          return new Response(JSON.stringify(result), { status: 404 });
+        if (!rateLimit.allowed) {
+          console.warn(`RATE LIMITED: ${ip}`);
+          const result = await failure<IVCWeatherResponse>(rateLimitedError, 'api/weather GET');
+          return new Response(JSON.stringify(result), {
+            status: 429,
+            headers: { 'Retry-After': String(rateLimit.retryAfterSeconds) }
+          });
         }
 
-        const { location } = parsed.data;
+        const url = new URL(request.url);
+        const parsedLocation = locationSchema.safeParse(url.searchParams.get('location') ?? '');
+
+        if (!parsedLocation.success) {
+          const invalidLocationError: ErrorType = {
+            code: 'invalid_location',
+            message: 'Invalid location',
+            details: parsedLocation.error.issues[0]?.message ?? 'Location is invalid',
+            hint: 'Use CITY, STATE, CITY, COUNTRY, a postal or ZIP code, latitude,longitude, or a street address'
+          };
+          const result = await failure<IVCWeatherResponse>(invalidLocationError, 'api/weather GET');
+          return new Response(JSON.stringify(result), { status: 400 });
+        }
+
+        const location = parsedLocation.data;
 
         const CACHE_KEY_PREFIX = 'srwcache::';
 
-        if (!location || location === '') {
-          console.error('Missing location')
-          const result = await failure<IVCWeatherResponse>(errors.missingInputs, 'api/weather GET');
-          return new Response(JSON.stringify(result), { status: 404 });
-        }
-
-        const viteEnv = 
-          env.SRW_ENV === 'development' 
-          ? 
-            'development' 
-          : 
+        const viteEnv =
+          env.SRW_ENV === 'development'
+          ?
+            'development'
+          :
             'production';
 
-        const devMode = 
-          env.DEV_MODE === 'offline' 
-          ? 
-            'offline' 
-          : 
+        const devMode =
+          env.DEV_MODE === 'offline'
+          ?
+            'offline'
+          :
             'online';
 
         const cacheKey = `${CACHE_KEY_PREFIX}${location}`;

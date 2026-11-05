@@ -9,6 +9,7 @@ import {
 } from '@tanstack/react-query';
 
 import appCss from '../styles.css?url'
+import NotFound from '#/components/NotFound';
 
 const TITLE = 'SuperRetroWeather';
 const DESCRIPTION = 'A free open-source 8-bit weather app.';
@@ -56,6 +57,7 @@ export const Route = createRootRoute({
     ],
   }),
   shellComponent: RootDocument,
+  notFoundComponent: NotFound,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
