@@ -46,13 +46,13 @@ SuperRetroWeather has a built-in offline mode that uses pre-fetched VC API respo
 NOTE: setting DEV_MODE to "offline" is required before running the end-to-end tests, as tests are run against static offline weather responses and there is no way to consistently test against live weather API responses.
 
 ## Tests
-SuperRetroWeather uses [Playwright](https://playwright.dev/) as its testing framework.  Tests must be run in offline mode as detailed above for the tests to pass as tests are run against the static offline weather responses, not live API responses. 
+SuperRetroWeather uses [Playwright](https://playwright.dev/) as its end-to-end testing framework and [Vitest](https://vitest.dev) with [React Testing Library](https://testing-library.com/docs/react-testing-library/) as its integration testing framework.  Tests must be run in offline mode as detailed above for the tests to pass as tests are run against the static offline weather responses, not live API responses. 
 
 ## TypeScript
 SuperRetroWeather uses [TypeScript](https://www.typescriptlang.org/).  This is non-negotiable.  Any pull requests removing TypeScript from the project will be rejected.
 
 ## REDIS
-SuperRetroWeather uses a REDIS cache to cache responses from the VisualCrossing API.  We use an Astro API route to check the REDIS cache with the ioredis library for a previously cached response (responses are cached for one hour), and gets a live API response and caches it for an hour if not cached.  SuperRetroWeather is set up to use local REDIS in development; you must have REDIS installed on your development machine.  SuperRetroWeather uses the ioredis package as a REDIS client on the frontend.
+SuperRetroWeather uses a REDIS cache to cache responses from the VisualCrossing API.  We use a TanStack Start server function to check the REDIS cache with the ioredis library for a previously cached response (responses are cached for one hour), and gets a live API response and caches it for an hour if not cached.  SuperRetroWeather is set up to use local REDIS in development; you must have REDIS installed on your development machine.  SuperRetroWeather uses the ioredis package as a REDIS client on the frontend.
 
 ## Bun
 As of July 2026, Bun replaces Node as the runtime.
@@ -101,8 +101,6 @@ If you prefer not to use Tailwind CSS:
 4. Uninstall the packages: `npm install @tailwindcss/vite tailwindcss -D`
 
 ## Linting & Formatting
-
-
 This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
 
 ```bash
